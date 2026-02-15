@@ -1,46 +1,70 @@
-import type { Metadata } from 'next'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import PageHeader from '@/components/PageHeader'
-import { ArrowRight, Award, Globe, Users } from 'lucide-react'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import type { Metadata } from "next";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
+import { ArrowRight, Award, Globe, Users } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: 'About AJAX Global | Our Story & Mission',
-  description: 'Learn about AJAX Global\'s journey combining human excellence with AI intelligence. Serving 500+ enterprise clients across 15+ countries.',
-  keywords: ['about AJAX Global', 'company mission', 'outsourcing solutions', 'operational intelligence'],
+  title: "About AJAX Global | Our Story & Mission",
+  description:
+    "Learn about AJAX Global's journey combining human excellence with AI intelligence. Serving 500+ enterprise clients across 15+ countries.",
+  keywords: [
+    "about AJAX Global",
+    "company mission",
+    "outsourcing solutions",
+    "operational intelligence",
+  ],
   openGraph: {
-    title: 'About AJAX Global | Our Story & Mission',
-    description: 'Transforming business operations through human excellence and AI intelligence since 2018.',
-    type: 'website',
+    title: "About AJAX Global | Our Story & Mission",
+    description:
+      "Transforming business operations through human excellence and AI intelligence since 2018.",
+    type: "website",
   },
-}
+};
 
 const milestones = [
-  { year: '2018', event: 'AJAX Global founded with a vision to combine human excellence with AI intelligence' },
-  { year: '2020', event: 'Expanded to 5 countries, serving 100+ enterprise clients' },
-  { year: '2022', event: 'Launched IntelliDesq™ - Revolutionary operational intelligence platform' },
-  { year: '2024', event: 'Reached unicorn status with $1B+ in managed operations' },
-]
+  {
+    year: "2018",
+    event:
+      "AJAX Global founded with a vision to combine human excellence with AI intelligence",
+  },
+  {
+    year: "2020",
+    event: "Expanded to 5 countries, serving 100+ enterprise clients",
+  },
+  {
+    year: "2022",
+    event:
+      "Launched IntelliDesq™ - Revolutionary operational intelligence platform",
+  },
+  {
+    year: "2024",
+    event: "Reached unicorn status with $1B+ in managed operations",
+  },
+];
 
 const values = [
   {
     icon: Users,
-    title: 'People First',
-    description: 'Our foundation is built on empowering talented individuals and fostering excellence.',
+    title: "People First",
+    description:
+      "Our foundation is built on empowering talented individuals and fostering excellence.",
   },
   {
     icon: Award,
-    title: 'Excellence',
-    description: 'We pursue the highest standards in everything we do, every single day.',
+    title: "Excellence",
+    description:
+      "We pursue the highest standards in everything we do, every single day.",
   },
   {
     icon: Globe,
-    title: 'Global Impact',
-    description: 'We serve businesses worldwide, supporting growth and transformation across industries.',
+    title: "Global Impact",
+    description:
+      "We serve businesses worldwide, supporting growth and transformation across industries.",
   },
-]
+];
 
 export default function AboutPage() {
   return (
@@ -62,13 +86,21 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed font-normal text-lg">
                 <p>
-                  AJAX Global was founded on a simple belief: businesses need more than just automation or outsourcing. They need intelligence combined with human excellence.
+                  AJAX Global was founded on a simple belief: businesses need
+                  more than just automation or outsourcing. They need
+                  intelligence combined with human excellence.
                 </p>
                 <p>
-                  We saw companies struggling to scale because they lacked either the right people or the insights to optimize their operations. So we built both—elite human teams paired with IntelliDesq™, our AI-powered intelligence platform.
+                  We saw companies struggling to scale because they lacked
+                  either the right people or the insights to optimize their
+                  operations. So we built both—elite human teams paired with
+                  IntelliDesq™, our AI-powered intelligence platform.
                 </p>
                 <p>
-                  Today, we partner with leading enterprises across sales, customer support, business operations, and back office to deliver transformative results. Our teams don't just execute tasks; they drive strategic outcomes.
+                  Today, we partner with leading enterprises across sales,
+                  customer support, business operations, and back office to
+                  deliver transformative results. Our teams don't just execute
+                  tasks; they drive strategic outcomes.
                 </p>
               </div>
             </div>
@@ -78,14 +110,22 @@ export default function AboutPage() {
               <div className="relative z-10 space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { label: 'Countries', value: '15+' },
-                    { label: 'Enterprise Clients', value: '500+' },
-                    { label: 'Team Members', value: '2,000+' },
-                    { label: 'Operations Managed', value: '$1B+' },
+                    { label: "Countries", value: "15+" },
+                    { label: "Enterprise Clients", value: "500+" },
+                    { label: "Team Members", value: "2,000+" },
+                    { label: "Operations Managed", value: "$1B+" },
                   ].map((stat, i) => (
-                    <div key={i} className="rounded-lg bg-secondary p-6 hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:shadow-md cursor-default animate-loop-bounce" style={{ animationDelay: `${i * 0.1}s` }}>
-                      <div className="text-3xl font-bold text-primary group-hover:animate-text-shimmer">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                    <div
+                      key={i}
+                      className="rounded-lg bg-secondary p-6 hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:shadow-md cursor-default animate-loop-bounce"
+                      style={{ animationDelay: `${i * 0.1}s` }}
+                    >
+                      <div className="text-3xl font-bold text-primary group-hover:animate-text-shimmer">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-muted-foreground font-medium">
+                        {stat.label}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -109,7 +149,11 @@ export default function AboutPage() {
 
           <div className="space-y-8">
             {milestones.map((milestone, index) => (
-              <div key={index} className="flex gap-6 sm:gap-12 animate-scroll-fade-in group" style={{ animationDelay: `${index * 0.15}s` }}>
+              <div
+                key={index}
+                className="flex gap-6 sm:gap-12 animate-scroll-fade-in group"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
                 <div className="flex flex-col items-center">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-lg group-hover:scale-125 group-hover:animate-loop-glow transition-all duration-300 shadow-lg">
                     {milestone.year.slice(-2)}
@@ -119,8 +163,12 @@ export default function AboutPage() {
                   )}
                 </div>
                 <div className="pt-2 pb-8 group-hover:translate-x-3 transition-transform duration-300">
-                  <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">{milestone.year}</h3>
-                  <p className="text-muted-foreground leading-relaxed max-w-xl font-normal group-hover:text-foreground/90 transition-colors duration-300">{milestone.event}</p>
+                  <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
+                    {milestone.year}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed max-w-xl font-normal group-hover:text-foreground/90 transition-colors duration-300">
+                    {milestone.event}
+                  </p>
                 </div>
               </div>
             ))}
@@ -139,7 +187,7 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, i) => {
-              const Icon = value.icon
+              const Icon = value.icon;
               return (
                 <div
                   key={i}
@@ -156,7 +204,7 @@ export default function AboutPage() {
                     {value.description}
                   </p>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
@@ -172,7 +220,10 @@ export default function AboutPage() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-foreground animate-scroll-fade-in">
             Ready to Transform Your Operations?
           </h2>
-          <p className="text-lg text-muted-foreground font-normal animate-scroll-fade-in" style={{ animationDelay: '0.1s' }}>
+          <p
+            className="text-lg text-muted-foreground font-normal animate-scroll-fade-in"
+            style={{ animationDelay: "0.1s" }}
+          >
             Join hundreds of enterprise teams already scaling with AJAX Global
           </p>
           <Button
@@ -190,5 +241,5 @@ export default function AboutPage() {
 
       <Footer />
     </main>
-  )
+  );
 }
