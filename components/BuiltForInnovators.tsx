@@ -41,12 +41,12 @@ export default function BuiltForInnovators() {
     <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
-      className="relative py-20 sm:py-32 bg-slate-950 overflow-hidden group"
+      className="relative py-20 sm:py-32 bg-slate-950 overflow-hidden group rounded-4xl mx-5 "
     >
       {/* --- INTERACTIVE BACKGROUND ELEMENTS --- */}
       {/* 1. Subtle Base Grid */}
       <div
-        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none "
         style={{
           backgroundImage:
             "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
