@@ -7,10 +7,10 @@ import { Button } from '@/components/ui/button'
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
   { name: 'HOS', href: '/hos' },
   { name: 'IntelliDesq™', href: '/intellidesq' },
   { name: 'Services', href: '/services' },
+  { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
 ]
 

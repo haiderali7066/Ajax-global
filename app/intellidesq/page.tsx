@@ -15,21 +15,23 @@ export const metadata: Metadata = {
   },
 }
 
-import IntelliDesqHero from '@/components/IntelliDesq/IntelliDesqHero'
-import ProblemWithAutomation from '@/components/IntelliDesq/ProblemWithAutomation'
-import WhatIsIntelliDesq from '@/components/IntelliDesq/WhatIsIntelliDesq'
-import CoreCapabilities from '@/components/IntelliDesq/CoreCapabilities'
-import HowItWorks from '@/components/IntelliDesq/HowItWorks'
-import IntelliDesqPlusHOS from '@/components/IntelliDesq/IntelliDesqPlusHOS'
-import IntelliDesqUseCases from '@/components/IntelliDesq/IntelliDesqUseCases'
-import WhyIntelliDesqByAJAX from '@/components/IntelliDesq/WhyIntelliDesqByAJAX'
-import IntelliDesqCTA from '@/components/IntelliDesq/IntelliDesqCTA'
+// import IntelliDesqHero from '@/components/IntelliDesq/IntelliDesqHero'
+// import ProblemWithAutomation from '@/components/IntelliDesq/ProblemWithAutomation'
+// import WhatIsIntelliDesq from '@/components/IntelliDesq/WhatIsIntelliDesq'
+// import CoreCapabilities from '@/components/IntelliDesq/CoreCapabilities'
+// import HowItWorks from '@/components/IntelliDesq/HowItWorks'
+// import IntelliDesqPlusHOS from '@/components/IntelliDesq/IntelliDesqPlusHOS'
+// import IntelliDesqUseCases from '@/components/IntelliDesq/IntelliDesqUseCases'
+// import WhyIntelliDesqByAJAX from '@/components/IntelliDesq/WhyIntelliDesqByAJAX'
+// import IntelliDesqCTA from '@/components/IntelliDesq/IntelliDesqCTA'
+import IntelliDesqPageComponent from '@/components/IntelliDesq/IntellidesqPage'
+
 
 export default function IntelliDesqPage() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
-
+{/* 
       <IntelliDesqHero />
       <ProblemWithAutomation />
       <WhatIsIntelliDesq />
@@ -38,11 +40,12 @@ export default function IntelliDesqPage() {
       <IntelliDesqPlusHOS />
       <IntelliDesqUseCases />
       <WhyIntelliDesqByAJAX />
-      <IntelliDesqCTA />
+      <IntelliDesqCTA /> */}
+      <IntelliDesqPageComponent />
 
       <Footer />
       <ChatbotWidget />
       <WhatsAppButton />
     </main>
-  )
+  );
 }
