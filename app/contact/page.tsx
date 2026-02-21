@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import ContactClient from "@/components/contact/contactClient";
+import ContactClient from "@/components/Contact/contactClient";
 
 export const metadata: Metadata = {
   title: "Contact AJAX Global | Get in Touch",

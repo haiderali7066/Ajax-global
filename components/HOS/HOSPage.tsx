@@ -178,9 +178,8 @@ function HOSHero() {
         >
           Build the{" "}
           <span
-            className="font-extrabold"
+            className="font-extrabold bg-primary"
             style={{
-              background: "linear-gradient(135deg, #7c3aed, #2563eb, #7c3aed)",
               backgroundSize: "200%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -647,11 +646,10 @@ function WhatIsHOS() {
             About HOS
           </span>
           <h2
-            className="text-[clamp(2.2rem,5vw,4rem)] font-light text-gray-900 leading-tight"
-            style={{ letterSpacing: "-0.02em" }}
+            className="text-[clamp(2.2rem,5vw,4rem)] font-light text-gray-900 leading-tight "
           >
             Get more work done with{" "}
-            <span className="font-extrabold" style={{ color: "#7c3aed" }}>
+            <span className="font-extrabold text-primary" >
               human talent
             </span>
             <br />
@@ -885,11 +883,7 @@ function WhatIsHOS() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-6 h-11 rounded-full font-semibold text-white text-sm"
-                style={{
-                  background: "linear-gradient(135deg, #6d28d9, #2563eb)",
-                  boxShadow: "0 6px 20px rgba(109,40,217,0.25)",
-                }}
+                className="inline-flex items-center gap-2 px-6 h-11 rounded-full font-semibold text-white text-sm bg-primary shadow-2xl shadow-indigo-400"
               >
                 Explore HOS Services <ArrowRight className="w-4 h-4" />
               </motion.button>
@@ -1002,7 +996,7 @@ function RolesWeProvide() {
             className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Roles we <strong>provide</strong>
+            Roles we <span className="text-red-700">provide</span>
           </h2>
           <p className="text-gray-400 font-light mt-3 max-w-sm mx-auto text-sm">
             Every role covered — specialized or fully custom.
@@ -1112,7 +1106,7 @@ function HowItWorks() {
             className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
             style={{ letterSpacing: "-0.02em" }}
           >
-            How it <strong>works</strong>
+            How it <span className="bg-amber-500 text-white">works</span>
           </h2>
           <p className="text-gray-400 font-light mt-3 max-w-md mx-auto">
             A repeatable process from sourcing to continuous improvement
@@ -1358,9 +1352,8 @@ function HOSIntelliDesqSection() {
               >
                 HOS +{" "}
                 <span
-                  className="font-extrabold"
+                  className="font-extrabold bg-primary"
                   style={{
-                    background: "linear-gradient(135deg,#a78bfa,#60a5fa)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                   }}
@@ -1601,7 +1594,7 @@ function UseCases() {
             style={{ letterSpacing: "-0.02em" }}
           >
             Solutions for every team,{" "}
-            <span className="font-extrabold" style={{ color: "#7c3aed" }}>
+            <span className="font-extrabold bg-primary text-white " >
               powered by people
             </span>
           </h2>
@@ -1806,9 +1799,8 @@ function AgentArc() {
             style={{ letterSpacing: "-0.02em" }}
           >
             <span
-              className="font-extrabold"
+              className="font-extrabold bg-primary"
               style={{
-                background: "linear-gradient(135deg,#7c3aed,#2563eb)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -1888,9 +1880,8 @@ function AgentArc() {
           <Link href="/contact">
             <motion.button
               whileHover={{ scale: 1.03 }}
-              className="inline-flex items-center gap-2 px-8 h-12 rounded-full font-semibold text-white text-sm"
+              className="bg-primary inline-flex items-center gap-2 px-8 h-12 rounded-full font-semibold text-white text-sm"
               style={{
-                background: "linear-gradient(135deg,#7c3aed,#2563eb)",
                 boxShadow: "0 8px 30px rgba(109,40,217,0.28)",
               }}
             >
@@ -1950,7 +1941,8 @@ function PricingSnapshot() {
             className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Simple, clear <strong>pricing</strong>
+            Simple, clear{" "}
+            <span className=" bg-green-700 text-white">pricing</span>
           </h2>
           <p className="text-gray-400 font-light mt-3 max-w-sm mx-auto text-sm">
             Per dedicated full-time resource (160 hrs / month)
@@ -2025,9 +2017,8 @@ function PricingSnapshot() {
           <Link href="/contact">
             <motion.button
               whileHover={{ scale: 1.02 }}
-              className="inline-flex items-center gap-2 px-7 h-11 rounded-full font-semibold text-white text-sm"
+              className=" bg-green-700 inline-flex items-center gap-2 px-7 h-11 rounded-full font-semibold text-white text-sm"
               style={{
-                background: "linear-gradient(135deg,#7c3aed,#2563eb)",
                 boxShadow: "0 6px 20px rgba(109,40,217,0.25)",
               }}
             >
@@ -2078,32 +2069,40 @@ function TrustSection() {
 
   return (
     <section
-      className="py-24 sm:py-32"
-      style={{ background: "#f8f7ff" }}
+      className="py-24 sm:py-32 relative overflow-hidden bg-[#050505] mx-10 rounded-[3rem] border border-white/5"
       ref={ref}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      {/* Subtle grid pattern for a "tech-institutional" look */}
+      <div
+        className="absolute inset-0 opacity-[0.15] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(#ffffff 0.5px, transparent 0.5px)`,
+          backgroundSize: "24px 24px",
+        }}
+      />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <span className="text-xs font-semibold uppercase tracking-[.2em] text-indigo-500 block mb-4">
-            Client Results
+          <span className="text-xs font-bold uppercase tracking-[.4em] text-indigo-400 block mb-4">
+            Verified Impact
           </span>
           <h2
-            className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
-            style={{ letterSpacing: "-0.02em" }}
+            className="text-[clamp(2.5rem,5vw,4rem)] font-medium text-white leading-tight"
+            style={{ letterSpacing: "-0.03em" }}
           >
             Brands who trust AJAX Global to{" "}
-            <span className="font-extrabold" style={{ color: "#7c3aed" }}>
+            <span className="font-extrabold text-transparent bg-clip-text bg-primary">
               accelerate outcomes
             </span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-8">
           {quotes.map((q, i) => (
             <motion.div
               key={i}
@@ -2111,52 +2110,54 @@ function TrustSection() {
               custom={i}
               initial="hidden"
               animate={inView ? "show" : "hidden"}
-              className="bg-white rounded-2xl border border-gray-200/60 overflow-hidden hover:shadow-lg hover:border-gray-300 transition-all duration-300 cursor-default"
-              whileHover={{ y: -5 }}
+              /* Card: Solid Deep Colors */
+              className="rounded-[2rem] overflow-hidden transition-all duration-500 cursor-default shadow-2xl"
+              style={{
+                backgroundColor: `${q.color}dd`, // Solid brand color with slight depth
+                border: `1px solid ${q.color}`,
+              }}
+              whileHover={{ y: -12, scale: 1.02 }}
             >
-              {/* Image area placeholder — styled gradient */}
-              <div
-                className="h-36 relative overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, ${q.color}15, ${q.color}05)`,
-                }}
-              >
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl opacity-40">{q.emoji}</span>
-                </div>
-                <div className="absolute bottom-4 left-5 right-5">
+              {/* Top Stat Section */}
+              <div className="p-8 pb-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-white/60 font-bold">
+                    Proven Result
+                  </span>
                   <div className="flex items-baseline gap-2">
-                    <span
-                      className="text-3xl font-black"
-                      style={{ color: q.color }}
-                    >
+                    <span className="text-5xl font-black text-white tracking-tighter">
                       {q.stat}
                     </span>
-                    <span className="text-sm text-gray-500 font-light">
+                    <span className="text-xs text-white/80 font-semibold uppercase tracking-wider">
                       {q.statLabel}
                     </span>
                   </div>
                 </div>
               </div>
-              <div className="p-5">
-                <div className="flex gap-0.5 mb-3">
+
+              <div className="p-8 pt-2  ">
+                <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, s) => (
                     <Star
                       key={s}
-                      className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400"
+                      className="w-4 h-4 fill-yellow-400 text-yellow-400" // Classic Yellow Stars
                     />
                   ))}
                 </div>
-                <p className="text-sm text-gray-500 font-light leading-relaxed mb-4">
+                <p className="text-base text-white font-medium leading-relaxed mb-8">
                   "{q.text}"
                 </p>
-                <div className="flex items-center gap-2 pt-3 border-t border-gray-100">
-                  <span className="text-lg">{q.emoji}</span>
+                <div className="flex items-center gap-3 pt-6 border-t border-white/10">
+                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-2xl border border-white/20 shadow-inner">
+                    {q.emoji}
+                  </div>
                   <div>
-                    <p className="text-xs font-bold text-gray-800">
+                    <p className="text-sm font-bold text-white tracking-wide">
                       {q.author}
                     </p>
-                    <p className="text-[10px] text-gray-400">{q.company}</p>
+                    <p className="text-xs text-white/60 font-medium">
+                      {q.company}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -2164,66 +2165,7 @@ function TrustSection() {
           ))}
         </div>
 
-        {/* Trust badges */}
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10"
-        >
-          {[
-            {
-              icon: HeartHandshake,
-              label: "Integrity First",
-              sub: "NDAs + data security on every engagement",
-              color: "#ec4899",
-            },
-            {
-              icon: Clock,
-              label: "7-Day Go-Live",
-              sub: "From approval to active team in one week",
-              color: "#7c3aed",
-            },
-            {
-              icon: Shield,
-              label: "99.2% Uptime SLA",
-              sub: "Backup resources always trained and in place",
-              color: "#059669",
-            },
-            {
-              icon: Star,
-              label: "98% Retention",
-              sub: "Results speak louder than promises",
-              color: "#d97706",
-            },
-          ].map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                custom={i}
-                className="bg-white rounded-2xl p-5 border border-gray-200/60 flex items-start gap-3 hover:shadow-md transition-all duration-300"
-                whileHover={{ y: -3 }}
-              >
-                <div
-                  className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center"
-                  style={{ background: `${item.color}10` }}
-                >
-                  <Icon className="w-4 h-4" style={{ color: item.color }} />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-gray-800">
-                    {item.label}
-                  </p>
-                  <p className="text-[10px] text-gray-400 font-light mt-0.5 leading-snug">
-                    {item.sub}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        
       </div>
     </section>
   );
@@ -2344,9 +2286,8 @@ function HOSCTA() {
           >
             Ready to build the{" "}
             <span
-              className="font-extrabold"
+              className="font-extrabold bg-primary"
               style={{
-                background: "linear-gradient(135deg,#7c3aed,#2563eb,#7c3aed)",
                 backgroundSize: "200%",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -2375,10 +2316,9 @@ function HOSCTA() {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-9 h-13 rounded-full font-bold text-white text-base"
+                className="bg-primary inline-flex items-center gap-2 px-9 h-13 rounded-full font-bold text-white text-base"
                 style={{
                   height: 52,
-                  background: "linear-gradient(135deg,#7c3aed,#2563eb)",
                   boxShadow: "0 12px 40px rgba(109,40,217,0.3)",
                 }}
               >

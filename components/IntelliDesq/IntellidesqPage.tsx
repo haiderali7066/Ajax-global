@@ -116,7 +116,7 @@ function Typewriter({ words }) {
   }, [text, del, idx, words]);
   return (
     <span>
-      <span style={{ color: "#7c3aed", fontWeight: 800 }}>{text}</span>
+      <span className="text-primary" style={{  fontWeight: 800 }}>{text}</span>
       <span
         className="inline-block w-0.5 h-[0.85em] align-middle ml-0.5 animate-pulse"
         style={{ background: "#7c3aed" }}
@@ -321,9 +321,9 @@ function IntelliDesqHero() {
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-2 px-7 h-12 rounded-full font-semibold text-white text-sm"
+              className="bg-primary inline-flex items-center gap-2 px-7 h-12 rounded-full font-semibold text-white text-sm"
               style={{
-                background: "linear-gradient(135deg, #7c3aed, #4f46e5)",
+               
                 boxShadow: "0 8px 30px rgba(124,58,237,0.32)",
               }}
             >
@@ -890,9 +890,16 @@ function WhatIsIntelliDesq() {
   ];
   const rings = [110, 78, 50];
   return (
-    <section className="py-24 sm:py-32 bg-white" ref={ref}>
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      className="relative py-24 sm:py-32 mx-10 rounded-[2.5rem] bg-slate-900 border border-slate-800 shadow-2xl overflow-hidden"
+      ref={ref}
+    >
+      {/* Optional: Subtle background glow to add depth behind the content */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-violet-600/10 blur-[150px] rounded-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* LEFT COLUMN: Text & Traits */}
           <motion.div
             variants={slideLeft}
             initial="hidden"
@@ -900,35 +907,30 @@ function WhatIsIntelliDesq() {
             className="space-y-8"
           >
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[.2em] text-violet-500 block mb-4">
+              <span className="text-xs font-bold uppercase tracking-[.25em] text-violet-400 block mb-4">
                 Core Philosophy
               </span>
               <h2
-                className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
+                className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-white leading-tight"
                 style={{ letterSpacing: "-0.02em" }}
               >
                 What IntelliDesq™{" "}
-                <span
-                  className="font-extrabold"
-                  style={{
-                    background: "linear-gradient(135deg,#7c3aed,#4f46e5)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
+                {/* Replaced inline styles with Tailwind gradient for a cleaner look */}
+                <span className="font-extrabold text-transparent bg-clip-text bg-primary">
                   actually is
                 </span>
               </h2>
-              <p className="text-base text-gray-400 font-light leading-relaxed mt-4">
+              <p className="text-lg text-slate-300 font-light leading-relaxed mt-5">
                 An AI-driven operational intelligence platform designed to{" "}
-                <strong className="text-gray-700 font-semibold">
+                <strong className="text-white font-semibold">
                   observe, assist, and optimize
                 </strong>{" "}
                 how teams work — in real time, at every layer of your
                 organisation.
               </p>
             </div>
-            <div className="space-y-4">
+
+            <div className="space-y-5 mt-8">
               {traits.map((t, i) => {
                 const Icon = t.icon;
                 return (
@@ -937,23 +939,24 @@ function WhatIsIntelliDesq() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={inView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.4 + i * 0.1 }}
-                    className="flex items-start gap-4 group cursor-default"
-                    whileHover={{ x: 4 }}
+                    className="flex items-start gap-5 group cursor-default"
+                    whileHover={{ x: 6 }}
                   >
                     <div
-                      className="shrink-0 w-10 h-10 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform"
+                      className="shrink-0 w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-lg"
                       style={{
-                        background: `${t.color}10`,
-                        border: `1.5px solid ${t.color}20`,
+                        background: `${t.color}15`,
+                        border: `1px solid ${t.color}30`,
+                        boxShadow: `0 0 15px ${t.color}10`,
                       }}
                     >
-                      <Icon className="w-4 h-4" style={{ color: t.color }} />
+                      <Icon className="w-5 h-5" style={{ color: t.color }} />
                     </div>
-                    <div>
-                      <p className="font-semibold text-gray-800 text-sm">
+                    <div className="pt-1">
+                      <p className="font-semibold text-slate-200 text-base group-hover:text-white transition-colors">
                         {t.title}
                       </p>
-                      <p className="text-xs text-gray-400 font-light mt-0.5">
+                      <p className="text-sm text-slate-400 font-light mt-1 leading-relaxed">
                         {t.sub}
                       </p>
                     </div>
@@ -962,33 +965,37 @@ function WhatIsIntelliDesq() {
               })}
             </div>
           </motion.div>
+
+          {/* RIGHT COLUMN: Brain Animation */}
           <motion.div
             variants={slideRight}
             initial="hidden"
             animate={inView ? "show" : "hidden"}
-            className="flex items-center justify-center"
+            className="flex items-center justify-center mt-10 lg:mt-0"
           >
             <div className="relative w-72 h-72 sm:w-80 sm:h-80">
+              {/* Core Brain Node */}
               <motion.div
-                className="absolute inset-0 m-auto w-20 h-20 rounded-full flex items-center justify-center z-10"
+                className="bg-primary absolute inset-0 m-auto w-20 h-20 rounded-full flex items-center justify-center z-20"
                 style={{
-                  background: "linear-gradient(135deg,#7c3aed,#4f46e5)",
-                  boxShadow: "0 0 50px rgba(124,58,237,0.3)",
+                  boxShadow: "0 0 40px rgba(124, 58, 237, 0.4)",
                 }}
-                animate={{ scale: [1, 1.07, 1] }}
+                animate={{ scale: [1, 1.05, 1] }}
                 transition={{
                   duration: 3,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
               >
-                <Brain className="w-8 h-8 text-white" />
+                <Brain className="w-8 h-8 text-white drop-shadow-md" />
               </motion.div>
+
+              {/* Pulsing Aura */}
               {[1, 2].map((i) => (
                 <motion.div
-                  key={i}
-                  className="absolute inset-0 m-auto w-20 h-20 rounded-full border-2 border-violet-300"
-                  animate={{ scale: [1, 3.8], opacity: [0.4, 0] }}
+                  key={`pulse-${i}`}
+                  className="absolute inset-0 m-auto w-20 h-20 rounded-full border border-violet-400 z-10"
+                  animate={{ scale: [1, 3.5], opacity: [0.5, 0] }}
                   transition={{
                     duration: 3,
                     repeat: Infinity,
@@ -997,41 +1004,48 @@ function WhatIsIntelliDesq() {
                   }}
                 />
               ))}
+
+              {/* Rotating Rings */}
               {rings.map((size, i) => (
                 <motion.div
-                  key={i}
-                  className="absolute top-1/2 left-1/2 rounded-full border"
+                  key={`ring-${i}`}
+                  className="absolute top-1/2 left-1/2 rounded-full border z-0"
                   style={{
                     width: size * 2,
                     height: size * 2,
                     marginTop: -size,
                     marginLeft: -size,
-                    borderColor: `rgba(124,58,237,${0.18 - i * 0.04})`,
+                    borderColor: `rgba(124, 58, 237, ${0.25 - i * 0.05})`,
                     borderStyle: i === 1 ? "dashed" : "solid",
                   }}
                   animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
                   transition={{
-                    duration: 12 + i * 6,
+                    duration: 15 + i * 5,
                     repeat: Infinity,
                     ease: "linear",
                   }}
                 >
+                  {/* Orbiting Dots */}
                   <div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full shadow"
+                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full shadow-[0_0_10px_currentColor]"
                     style={{
                       background:
-                        i === 0 ? "#7c3aed" : i === 1 ? "#0ea5e9" : "#10b981",
+                        i === 0 ? "#8b5cf6" : i === 1 ? "#38bdf8" : "#34d399",
+                      color:
+                        i === 0 ? "#8b5cf6" : i === 1 ? "#38bdf8" : "#34d399",
                     }}
                   />
                 </motion.div>
               ))}
-              <div className="absolute -right-4 top-1/4 text-xs font-medium text-gray-500 bg-white rounded-lg px-2.5 py-1.5 border border-gray-100 shadow-sm">
+
+              {/* Floating Glassmorphism Labels */}
+              <div className="absolute -right-4 top-1/4 text-xs sm:text-sm font-medium text-slate-200 bg-slate-800/80 backdrop-blur-md rounded-xl px-4 py-2 border border-slate-600 shadow-[0_4px_20px_rgba(0,0,0,0.3)] z-30">
                 Observes
               </div>
-              <div className="absolute -left-4 top-1/2 text-xs font-medium text-gray-500 bg-white rounded-lg px-2.5 py-1.5 border border-gray-100 shadow-sm">
+              <div className="absolute -left-4 top-1/2 text-xs sm:text-sm font-medium text-slate-200 bg-slate-800/80 backdrop-blur-md rounded-xl px-4 py-2 border border-slate-600 shadow-[0_4px_20px_rgba(0,0,0,0.3)] z-30">
                 Analyzes
               </div>
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs font-medium text-gray-500 bg-white rounded-lg px-2.5 py-1.5 border border-gray-100 shadow-sm">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-xs sm:text-sm font-medium text-slate-200 bg-slate-800/80 backdrop-blur-md rounded-xl px-4 py-2 border border-slate-600 shadow-[0_4px_20px_rgba(0,0,0,0.3)] z-30">
                 Optimizes
               </div>
             </div>
@@ -1198,7 +1212,7 @@ function HowItWorks() {
             className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
             style={{ letterSpacing: "-0.02em" }}
           >
-            How <strong>IntelliDesq™</strong> works
+            How <span className="bg-primary text-white">IntelliDesq™</span> works
           </h2>
         </motion.div>
         <div className="relative">
@@ -1287,7 +1301,7 @@ function IntelliDesqPlusHOS() {
   return (
     <section
       className="py-24 sm:py-32 relative overflow-hidden"
-      style={{ background: "#1a1a2e" }}
+      style={{ background: "#022c22" }} // Rich dark emerald background
       ref={ref}
     >
       <div
@@ -1302,7 +1316,7 @@ function IntelliDesqPlusHOS() {
         className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle,rgba(124,58,237,0.18) 0%,transparent 65%)",
+            "radial-gradient(circle,rgba(16,185,129,0.15) 0%,transparent 65%)", // Emerald glow
           filter: "blur(60px)",
         }}
         animate={{ scale: [1, 1.1, 1] }}
@@ -1317,7 +1331,7 @@ function IntelliDesqPlusHOS() {
             className="space-y-8"
           >
             <div>
-              <span className="text-xs font-semibold uppercase tracking-[.2em] text-violet-400 block mb-4">
+              <span className="text-xs font-semibold uppercase tracking-[.2em] text-emerald-400 block mb-4">
                 The Combo
               </span>
               <h2
@@ -1325,7 +1339,10 @@ function IntelliDesqPlusHOS() {
                 style={{ letterSpacing: "-0.02em" }}
               >
                 IntelliDesq™ +<br />
-                <strong>Human Outsourcing</strong>
+                {/* If .bg-primary is a global class, you might want to change it to text-emerald-400 or similar if it clashes */}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+                  Human Outsourcing
+                </span>
               </h2>
               <p className="text-white/40 font-light leading-relaxed mt-4">
                 When elite human teams combine with operational intelligence,
@@ -1346,12 +1363,12 @@ function IntelliDesqPlusHOS() {
                 >
                   <CheckCircle
                     className="w-4 h-4 mt-0.5 shrink-0"
-                    style={{ color: p.color }}
+                    style={{ color: p.color || "#34d399" }} // Fallback to emerald if no color in array
                   />
                   <div>
                     <p
                       className="font-semibold text-sm"
-                      style={{ color: p.color }}
+                      style={{ color: p.color || "#fff" }} // Fallback to white if no color in array
                     >
                       {p.title}
                     </p>
@@ -1365,7 +1382,7 @@ function IntelliDesqPlusHOS() {
             <Link href="/hos">
               <motion.button
                 whileHover={{ scale: 1.02 }}
-                className="inline-flex items-center gap-2 px-6 h-11 rounded-full font-semibold text-violet-700 text-sm bg-white hover:bg-gray-100 transition-colors"
+                className="inline-flex items-center gap-2 px-6 h-11 rounded-full font-semibold text-emerald-800 text-sm bg-white hover:bg-gray-100 transition-colors shadow-[0_0_20px_rgba(16,185,129,0.2)]"
               >
                 Explore HOS <ArrowRight className="w-4 h-4" />
               </motion.button>
@@ -1389,18 +1406,18 @@ function IntelliDesqPlusHOS() {
                 className="h-px w-full"
                 style={{
                   background:
-                    "linear-gradient(90deg,transparent,rgba(167,139,250,0.6),rgba(96,165,250,0.5),transparent)",
+                    "linear-gradient(90deg,transparent,rgba(52,211,153,0.6),rgba(45,212,191,0.5),transparent)", // Emerald to Teal gradient
                 }}
               />
               <div className="p-8 text-center space-y-7">
                 <div className="flex items-center justify-center gap-6">
                   <motion.div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center border border-white/[0.08]"
-                    style={{ background: "rgba(124,58,237,0.2)" }}
+                    style={{ background: "rgba(16,185,129,0.2)" }} // Emerald
                     animate={{ rotate: [0, 4, -4, 0] }}
                     transition={{ duration: 5, repeat: Infinity }}
                   >
-                    <Brain className="w-7 h-7 text-white" />
+                    <Brain className="w-7 h-7 text-emerald-400" />
                   </motion.div>
                   <motion.span
                     className="text-3xl font-black text-white/40"
@@ -1411,11 +1428,11 @@ function IntelliDesqPlusHOS() {
                   </motion.span>
                   <motion.div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center border border-white/[0.08]"
-                    style={{ background: "rgba(79,70,229,0.2)" }}
+                    style={{ background: "rgba(20,184,166,0.2)" }} // Teal
                     animate={{ rotate: [0, -4, 4, 0] }}
                     transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
                   >
-                    <Users className="w-7 h-7 text-white" />
+                    <Users className="w-7 h-7 text-teal-400" />
                   </motion.div>
                 </div>
                 <div>
@@ -1428,9 +1445,9 @@ function IntelliDesqPlusHOS() {
                 </div>
                 <div className="grid grid-cols-3 gap-3">
                   {[
-                    ["10×", "Speed", "#a78bfa"],
-                    ["40%", "Savings", "#6ee7b7"],
-                    ["98%", "Quality", "#7dd3fc"],
+                    ["10×", "Speed", "#34d399"], // Emerald
+                    ["40%", "Savings", "#2dd4bf"], // Teal
+                    ["98%", "Quality", "#a3e635"], // Lime
                   ].map(([v, l, c]) => (
                     <motion.div
                       key={l}
@@ -1438,7 +1455,7 @@ function IntelliDesqPlusHOS() {
                       style={{ background: "rgba(255,255,255,0.04)" }}
                       whileHover={{
                         scale: 1.07,
-                        background: "rgba(124,58,237,0.18)",
+                        background: "rgba(16,185,129,0.15)", // Hover Emerald
                       }}
                     >
                       <div className="text-lg font-extrabold text-white">
@@ -1452,9 +1469,9 @@ function IntelliDesqPlusHOS() {
                 </div>
                 <div className="space-y-2 pt-2 border-t border-white/[0.05]">
                   {[
-                    ["Decision Engine", "94%", "#7c3aed"],
-                    ["Workflow AI", "88%", "#4f46e5"],
-                    ["Compliance", "99%", "#10b981"],
+                    ["Decision Engine", "94%", "#10b981"], // Emerald
+                    ["Workflow AI", "88%", "#14b8a6"], // Teal
+                    ["Compliance", "99%", "#84cc16"], // Lime
                   ].map(([label, pct, color]) => (
                     <div key={label} className="flex items-center gap-3">
                       <span className="text-[10px] text-white/30 w-28 truncate">
@@ -1465,8 +1482,8 @@ function IntelliDesqPlusHOS() {
                         style={{ background: "rgba(255,255,255,0.06)" }}
                       >
                         <motion.div
-                          className="h-full rounded-full"
-                          style={{ background: color }}
+                          className="h-full rounded-full shadow-[0_0_8px_currentColor]"
+                          style={{ background: color, color: color }}
                           initial={{ width: 0 }}
                           animate={inView ? { width: pct } : {}}
                           transition={{ delay: 0.8, duration: 1 }}
@@ -1560,9 +1577,9 @@ function UseCases() {
           >
             Use cases &{" "}
             <span
-              className="font-extrabold"
+              className="font-extrabold bg-primary"
               style={{
-                background: "linear-gradient(135deg,#7c3aed,#4f46e5)",
+                
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -1775,7 +1792,7 @@ function FeatureSpotlight() {
             className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Features that <strong>change everything</strong>
+            Features that <span className="bg-red-800 text-white">change everything</span>
           </h2>
         </motion.div>
         <div className="space-y-20">
@@ -1938,7 +1955,9 @@ function LiveMetrics() {
             className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
             style={{ letterSpacing: "-0.02em" }}
           >
-            Real <strong>performance</strong> numbers
+            Real {""}
+            <span className="bg-primary text-white">performance</span>
+            {""} numbers
           </h2>
           <p className="text-gray-400 font-light mt-3 max-w-sm mx-auto text-sm">
             Average outcomes across client deployments in the first 90 days
@@ -1998,71 +2017,86 @@ function Integrations() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const tools = [
-    { name: "Salesforce", emoji: "☁️", bg: "#e0f0ff" },
-    { name: "HubSpot", emoji: "🧡", bg: "#fff0e8" },
-    { name: "Zendesk", emoji: "💚", bg: "#e8fff0" },
-    { name: "Slack", emoji: "💬", bg: "#f0e8ff" },
-    { name: "Jira", emoji: "📋", bg: "#e8f0ff" },
-    { name: "Notion", emoji: "⬛", bg: "#f5f5f5" },
-    { name: "AppFolio", emoji: "🏠", bg: "#eee8ff" },
-    { name: "Buildium", emoji: "🔑", bg: "#ffe8ee" },
-    { name: "Shopify", emoji: "🛒", bg: "#e8fff0" },
-    { name: "QuickBooks", emoji: "💰", bg: "#e8fff5" },
-    { name: "Monday.com", emoji: "📅", bg: "#ffe8f5" },
-    { name: "+ More", emoji: "✨", bg: "#f0e8ff" },
+    { name: "Salesforce", emoji: "☁️", bg: "#004d73" }, // Navy Blue
+    { name: "HubSpot", emoji: "🧡", bg: "#8c321d" }, // Deep Terracotta
+    { name: "Zendesk", emoji: "💚", bg: "#024d38" }, // Deep Emerald
+    { name: "Slack", emoji: "💬", bg: "#4a154b" }, // Deep Plum
+    { name: "Jira", emoji: "📋", bg: "#0747a6" }, // Strong Blue
+    { name: "Notion", emoji: "⬛", bg: "#2f2f2f" }, // Gunmetal Gray
+    { name: "AppFolio", emoji: "🏠", bg: "#5b21b6" }, // Royal Violet
+    { name: "Buildium", emoji: "🔑", bg: "#831843" }, // Deep Maroon
+    { name: "Shopify", emoji: "🛒", bg: "#3d5a16" }, // Dark Olive
+    { name: "QuickBooks", emoji: "💰", bg: "#166534" }, // Forest Green
+    { name: "Monday.com", emoji: "📅", bg: "#9f1239" }, // Crimson Rose
+    { name: "+ More", emoji: "✨", bg: "#18181b" }, // Zinc Black
   ];
   return (
     <section
-      className="py-24 sm:py-32"
-      style={{ background: "#f8f7ff" }}
+      className="relative py-24 sm:py-32 mx-10 rounded-3xl overflow-hidden bg-black border border-zinc-800 shadow-2xl"
       ref={ref}
     >
-      <div className="max-w-6xl mx-auto px-6">
+      {/* Color-Rich Ambient Glow: A vibrant 3-color gradient blur sitting behind the content */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-gradient-to-r from-cyan-900/40 via-violet-900/40 to-fuchsia-900/40 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
-          <span className="text-xs font-semibold uppercase tracking-[.2em] text-violet-500 block mb-4">
+          {/* Saturated accent with a subtle drop shadow for depth */}
+          <span className="text-sm font-bold uppercase tracking-[0.25em] text-cyan-400 block mb-5 drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]">
             Plug & Play
           </span>
+
+          {/* High-contrast, highly readable heading */}
           <h2
-            className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900"
-            style={{ letterSpacing: "-0.02em" }}
+            className="text-[clamp(2.5rem,5vw,4rem)] font-medium text-slate-50 leading-tight"
+            style={{ letterSpacing: "-0.01em" }}
           >
-            Works with your <strong>existing stack</strong>
+            Works with your {/* Rich multi-color gradient */}
+            <strong className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400">
+              existing stack
+            </strong>
           </h2>
-          <p className="text-gray-400 font-light mt-3 max-w-md mx-auto text-sm">
+
+          {/* Book-readable paragraph: Increased size, better line height, crisp slate color */}
+          <p className="text-slate-300 mt-6 max-w-lg mx-auto text-base sm:text-lg leading-relaxed font-normal">
             Integrates seamlessly with the tools your teams already use — no
             migration needed.
           </p>
         </motion.div>
+
         <motion.div
           variants={stagger}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="flex flex-wrap items-center justify-center gap-3"
+          className="flex flex-wrap items-center justify-center gap-4"
         >
           {tools.map((t, i) => (
             <motion.div
               key={i}
               variants={scaleIn}
               custom={i}
-              className="flex items-center gap-2.5 px-5 py-3 rounded-full border border-gray-200 text-sm font-semibold text-gray-700 cursor-default hover:border-violet-200 hover:shadow-md transition-all duration-300"
-              style={{ background: t.bg }}
+              // Crisp, high-contrast dark pills with vibrant, saturated hover states
+              className="flex items-center gap-3 px-6 py-3.5 rounded-full bg-zinc-900 border border-zinc-700/80 text-sm sm:text-base font-medium text-slate-100 cursor-default hover:border-cyan-400 hover:bg-zinc-800 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-all duration-300"
+              // Note: Override this inline style if t.bg makes the text unreadable.
+              style={{ background: t.bg || undefined }}
               whileHover={{ y: -4, scale: 1.05 }}
             >
-              <span className="text-base">{t.emoji}</span>
+              {/* Slightly larger emoji with a shadow to make it pop */}
+              <span className="text-xl drop-shadow-md">{t.emoji}</span>
               {t.name}
             </motion.div>
           ))}
         </motion.div>
+
         <motion.p
           variants={fadeUp}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="text-center text-xs text-gray-400 font-light mt-8"
+          className="text-center text-sm text-slate-400 font-normal mt-12 tracking-wide"
         >
           API-first architecture with webhook support. Custom integrations
           available.
@@ -2347,9 +2381,9 @@ function IntelliDesqCTA() {
           >
             Intelligence that makes teams{" "}
             <span
-              className="font-extrabold"
+              className="font-extrabold bg-primary"
               style={{
-                background: "linear-gradient(135deg,#7c3aed,#4f46e5,#7c3aed)",
+                
                 backgroundSize: "200%",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
@@ -2374,10 +2408,10 @@ function IntelliDesqCTA() {
               <motion.button
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-9 rounded-full font-bold text-white text-base"
+                className="bg-primary inline-flex items-center gap-2 px-9 rounded-full font-bold text-white text-base"
                 style={{
                   height: 52,
-                  background: "linear-gradient(135deg,#7c3aed,#4f46e5)",
+                
                   boxShadow: "0 12px 40px rgba(124,58,237,0.3)",
                 }}
               >
