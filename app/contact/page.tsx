@@ -30,7 +30,7 @@ export default function ContactPage() {
 
       <ContactClient />
 
-      <Footer />
+      <Footer  />
     </main>
   );
 }
