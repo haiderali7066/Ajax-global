@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 // import ContactClient from "@/components/Contact/ContactPage";
+import ContactClient from "@/components/Contact/contactClient";
 
 export const metadata: Metadata = {
   title: "Contact AJAX Global | Get in Touch",
@@ -28,7 +29,7 @@ export default function ContactPage() {
         description="Have questions? Our team is ready to help. Reach out today and let's explore how we can transform your operations."
       />
 
-      {/* <ContactClient /> */}
+      <ContactClient />
 
       <Footer  />
     </main>

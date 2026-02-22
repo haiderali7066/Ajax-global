@@ -23,17 +23,17 @@ export default function Home() {
       <Header />
       <HeroSection />
       <ServiceSelector />
+      <TeamSupportCards />
       <VideoSection />
       <ProductLifecycle />
-      <TeamSupportCards />
       <BuiltForInnovators />
-      <SolutionsShowcase />
-      <InteractiveCategorySection />
+      {/* <SolutionsShowcase /> */}
+      {/* <InteractiveCategorySection /> */}
       <AjaxAdvantage />
       <TeamImpact />
       <TrustAwards />
       <AIPlatformCTA />
-      <WhyAjaxGlobal />
+      {/* <WhyAjaxGlobal /> */}
       <PrimaryCTA />
       <Footer />
       <ChatbotWidget />
