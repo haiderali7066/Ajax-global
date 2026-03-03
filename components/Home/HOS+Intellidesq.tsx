@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState , useEffect  } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { Cpu, Brain, Shield, Clock, Layers, CheckCircle, ArrowRight, Zap } from "lucide-react";
@@ -29,7 +29,7 @@ const featureVariants = {
   }),
 };
 
-// Animated background component
+// Optimized animated background component
 function AnimatedBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
@@ -43,70 +43,27 @@ function AnimatedBackground() {
       />
       <div
         className="absolute inset-0"
-        
         style={{
           background: "#1a1a2e",
           clipPath: "polygon(60% 0, 100% 0, 100% 100%, 40% 100%)",
         }}
       />
 
-      {/* Animated gradient orbs */}
+      {/* Single animated gradient orb (reduced from 2) */}
       <motion.div
-        className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(139,92,246,0.3) 0%, transparent 70%)",
           filter: "blur(80px)",
+          willChange: "transform",
         }}
         animate={{
-          scale: [1, 1.15, 0.95, 1.1, 1],
-          x: [0, 30, -20, 10, 0],
-          y: [0, -30, 20, -10, 0],
+          scale: [1, 1.1, 1],
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(16,185,129,0.4) 0%, transparent 65%)",
-          filter: "blur(80px)",
-        }}
-        animate={{
-          scale: [1, 0.9, 1.2, 0.95, 1],
-          x: [0, -40, 25, -15, 0],
-          y: [0, 40, -25, 15, 0],
-        }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* Animated gradient mesh overlay */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-30" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.3">
-              <animate attributeName="stopOpacity" values="0.3;0.6;0.3" dur="6s" repeatCount="indefinite" />
-            </stop>
-            <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.2">
-              <animate attributeName="stopOpacity" values="0.2;0.4;0.2" dur="6s" repeatCount="indefinite" />
-            </stop>
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grad1)" />
-      </svg>
-
-      {/* Animated dot grid */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)`,
-          backgroundSize: "60px 60px",
-        }}
-        animate={{
-          backgroundPosition: ["0px 0px", "60px 60px"],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      />
-
-      {/* Grid pattern */}
+      {/* Grid pattern - CSS only, no animation */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.05]"
         style={{
@@ -119,13 +76,18 @@ function AnimatedBackground() {
   );
 }
 
-// Glow effect component
+// Optimized glow card - memoized mouse tracking
 function GlowCard({ children, variant = "purple" }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const ref = useRef(null);
+  const timeoutRef = useRef(null);
 
   const handleMouseMove = (e) => {
     if (!ref.current) return;
+    
+    // Throttle mouse move updates
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    
     const rect = ref.current.getBoundingClientRect();
     setMousePosition({
       x: e.clientX - rect.left,
@@ -133,37 +95,43 @@ function GlowCard({ children, variant = "purple" }) {
     });
   };
 
-  const glowColor = variant === "purple" ? "rgba(139, 92, 246, 0.3)" : "rgba(16, 185, 129, 0.3)";
+  const handleMouseLeave = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  const glowColor = variant === "purple" ? "rgba(139, 92, 246, 0.25)" : "rgba(16, 185, 129, 0.25)";
 
   return (
     <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="rounded-2xl border border-white/10 overflow-hidden relative group"
       style={{
         background: "rgba(255,255,255,0.05)",
         backdropFilter: "blur(20px)",
         boxShadow: "0 24px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08)",
+        willChange: "box-shadow",
       }}
       whileHover={{
-        boxShadow: `0 24px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1), 0 0 40px ${glowColor}`,
+        boxShadow: `0 24px 80px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)`,
       }}
       transition={{ duration: 0.3 }}
     >
-      {/* Glow effect on hover */}
+      {/* Optimized glow effect */}
       <motion.div
         className="absolute pointer-events-none rounded-full"
         style={{
-          width: 200,
-          height: 200,
+          width: 150,
+          height: 150,
           background: `radial-gradient(circle, ${glowColor}, transparent)`,
-          left: mousePosition.x - 100,
-          top: mousePosition.y - 100,
+          left: mousePosition.x - 75,
+          top: mousePosition.y - 75,
           filter: "blur(40px)",
-          opacity: 0,
+          willChange: "transform",
         }}
         initial={{ opacity: 0 }}
-        whileHover={{ opacity: 0.8 }}
+        whileHover={{ opacity: 0.6 }}
         transition={{ duration: 0.3 }}
       />
 
@@ -182,8 +150,8 @@ function GlowCard({ children, variant = "purple" }) {
   );
 }
 
-// Animated feature item
-function FeatureItem({ icon: Icon, label, delay, index }) {
+// Optimized feature item
+function FeatureItem({ icon: Icon, label, index }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -193,48 +161,47 @@ function FeatureItem({ icon: Icon, label, delay, index }) {
       className="flex items-center gap-3 group cursor-default"
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ x: 12 }}
+      whileHover={{ x: 8 }}
     >
       <motion.div
-        className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center shrink-0"
-        style={{ background: "rgba(255,255,255,0.04)" }}
+        className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center shrink-0 transition-colors"
+        style={{ 
+          background: "rgba(255,255,255,0.04)",
+          willChange: "transform",
+        }}
         whileHover={{
-          borderColor: "rgba(167, 139, 250, 0.4)",
-          background: "rgba(139, 92, 246, 0.15)",
-          scale: 1.1,
+          scale: 1.08,
         }}
         transition={{ duration: 0.2 }}
       >
         <motion.div
-          animate={isHovered ? { rotate: 360, scale: 1.2 } : { rotate: 0, scale: 1 }}
-          transition={{ duration: 0.6 }}
+          animate={isHovered ? { rotate: 360 } : { rotate: 0 }}
+          transition={{ duration: 0.5 }}
         >
           <Icon className="w-4 h-4 text-purple-300" />
         </motion.div>
       </motion.div>
-      <motion.span
-        className="text-white/50 text-sm"
-        animate={isHovered ? { color: "rgba(255,255,255,0.9)" } : { color: "rgba(255,255,255,0.5)" }}
-      >
+      <span className="text-white/50 text-sm group-hover:text-white/80 transition-colors">
         {label}
-      </motion.span>
-      <motion.div animate={isHovered ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }} transition={{ duration: 0.2 }}>
+      </span>
+      <motion.div animate={isHovered ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }} transition={{ duration: 0.2 }}>
         <CheckCircle className="w-4 h-4 text-emerald-400 ml-auto" />
       </motion.div>
     </motion.div>
   );
 }
 
-// Animated counter
+// Optimized counter - simpler animation
 function AnimatedCounter({ target, label, emoji }) {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
-useEffect(() => {    if (!inView) return;
+  useEffect(() => {
+    if (!inView) return;
 
     let current = 0;
-    const increment = target / 50;
+    const increment = target / 40; // Reduced steps for better performance
     const interval = setInterval(() => {
       current += increment;
       if (current >= target) {
@@ -243,7 +210,7 @@ useEffect(() => {    if (!inView) return;
       } else {
         setCount(Math.floor(current));
       }
-    }, 30);
+    }, 40); // Slower updates
 
     return () => clearInterval(interval);
   }, [inView, target]);
@@ -251,24 +218,25 @@ useEffect(() => {    if (!inView) return;
   return (
     <motion.div
       ref={ref}
-      className="rounded-xl p-3 text-center border border-white/[0.08] cursor-default"
-      style={{ background: "rgba(255,255,255,0.05)" }}
-      whileHover={{
-        scale: 1.08,
-        background: "rgba(139, 92, 246, 0.2)",
-        borderColor: "rgba(167, 139, 250, 0.3)",
+      className="rounded-xl p-3 text-center border border-white/[0.08] cursor-default transition-colors"
+      style={{ 
+        background: "rgba(255,255,255,0.05)",
+        willChange: "transform",
       }}
-      transition={{ duration: 0.3 }}
+      whileHover={{
+        scale: 1.06,
+      }}
+      transition={{ duration: 0.2 }}
     >
-      <motion.div className="text-lg font-bold text-white" animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 0.4 }}>
+      <div className="text-lg font-bold text-white">
         {emoji} {count}×
-      </motion.div>
+      </div>
       <div className="text-[10px] text-white/30 mt-0.5">{label}</div>
     </motion.div>
   );
 }
 
-// Animated progress bar
+// Optimized progress bar - removed continuous animation
 function ProgressBar({ label, percentage, color = "rgba(139, 92, 246, 1)" }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
@@ -278,28 +246,15 @@ function ProgressBar({ label, percentage, color = "rgba(139, 92, 246, 1)" }) {
       <span className="text-xs text-white/40 w-36 truncate">{label}</span>
       <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.07)" }}>
         <motion.div
-          className="h-full rounded-full relative"
+          className="h-full rounded-full"
           style={{
             background: color,
-            backgroundImage:
-              "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
+            willChange: "width",
           }}
           initial={{ width: 0 }}
           animate={inView ? { width: percentage } : { width: 0 }}
-          transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
-        >
-          <motion.div
-            className="absolute inset-0 rounded-full"
-            animate={{
-              backgroundPosition: ["0px 0px", "20px 0px"],
-            }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            style={{
-              backgroundImage: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
-              backgroundSize: "20px 100%",
-            }}
-          />
-        </motion.div>
+          transition={{ delay: 0.6, duration: 1, ease: "easeOut" }}
+        />
       </div>
       <span className="text-xs text-white/40 w-8 text-right font-semibold">{percentage}</span>
     </motion.div>
@@ -319,11 +274,11 @@ export default function HOSIntelliDesqSection() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 relative overflow-hidden" ref={ref}>
+    <section className="py-16 sm:py-20 relative overflow-hidden " ref={ref}>
       <AnimatedBackground />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* Animated header */}
+        {/* Optimized header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -333,9 +288,9 @@ export default function HOSIntelliDesqSection() {
           <motion.div
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-white/5 backdrop-blur-sm"
             animate={{ scale: [1, 1.02, 1] }}
-            transition={{ duration: 3, repeat: Infinity }}
+            transition={{ duration: 4, repeat: Infinity }} // Slower animation
           >
-            <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity }}>
+            <motion.div animate={{ rotate: 360 }} transition={{ duration: 3, repeat: Infinity }}>
               <Zap className="w-3 h-3 text-purple-300" />
             </motion.div>
             <span className="text-xs text-white/70">Powered by IntelliDesq™</span>
@@ -347,18 +302,9 @@ export default function HOSIntelliDesqSection() {
             <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.8 }}>
               <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-white leading-tight" style={{ letterSpacing: "-0.02em" }}>
                 HOS +{" "}
-                <motion.span
-                  className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-purple-300 to-cyan-300"
-                  animate={{
-                    backgroundPosition: ["0%", "200%"],
-                  }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                  style={{
-                    backgroundSize: "200% 100%",
-                  }}
-                >
+                <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-purple-300">
                   IntelliDesq™
-                </motion.span>
+                </span>
               </h2>
               <motion.p
                 className="text-white/50 font-light leading-relaxed mt-4"
@@ -380,14 +326,12 @@ export default function HOSIntelliDesqSection() {
             <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.8 }}>
               <Link href="/intellidesq">
                 <motion.button
-                  whileHover={{ scale: 1.05, gap: 12 }}
+                  whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.98 }}
                   className="inline-flex items-center gap-2 px-6 h-11 rounded-full font-semibold text-primary text-sm bg-white hover:shadow-lg transition-all"
                 >
                   Explore IntelliDesq™
-                  <motion.div animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                    <ArrowRight className="w-4 h-4" />
-                  </motion.div>
+                  <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </Link>
             </motion.div>
@@ -404,12 +348,11 @@ export default function HOSIntelliDesqSection() {
                 >
                   <motion.div
                     className="inline-flex w-20 h-20 rounded-2xl items-center justify-center text-4xl mb-4 border border-white/10"
-                    style={{ background: "rgba(139, 92, 246, 0.2)" }}
+                    style={{ background: "rgba(139, 92, 246, 0.2)", willChange: "transform" }}
                     animate={{
                       rotate: [0, 4, -4, 0],
-                      scale: [1, 1.05, 1],
                     }}
-                    transition={{ duration: 5, repeat: Infinity }}
+                    transition={{ duration: 6, repeat: Infinity }} // Slower rotation
                   >
                     🧠
                   </motion.div>
