@@ -71,7 +71,7 @@ export function PricingSnapshot() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const tiers = [
-    { label: "Associate", hourly: "$9", monthly: "$1,300/mo", desc: "Basic ops, data entry, ticket creation, general tasks", color: "#7c3aed" },
+    { label: "Associate", hourly: "$9", monthly: "$1,300/mo", desc: "Starting from as low as", color: "#7c3aed" },
     { label: "Specialist", hourly: "$11.50", monthly: "$1,600/mo", desc: "Escalations, upselling, vendor outreach, advanced coordination", color: "#2563eb", featured: true },
     { label: "Manager", hourly: "$14", monthly: "$2,000/mo", desc: "Team oversight, QA management, training, and escalations", color: "#059669" },
   ];
