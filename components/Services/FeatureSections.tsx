@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
-import { OKRMockup, TicketsMockup, DashboardMockup } from "@/components/services/Mockups";
+import { OKRMockup, TicketsMockup, DashboardMockup } from "@/components/Services/Mockups";
 import { featureSections } from "@/lib/services-data";
 
 const mockupMap: Record<string, React.ReactNode> = {
