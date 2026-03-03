@@ -270,7 +270,6 @@ export default function ServiceSelector() {
 
               {/* CTA */}
               <div className="pt-2">
-                <Mag>
                   <Button
                     asChild
                     size="lg"
@@ -285,7 +284,7 @@ export default function ServiceSelector() {
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
-                </Mag>
+                
               </div>
             </div>
 

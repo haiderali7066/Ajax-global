@@ -309,9 +309,8 @@ function HeroV1() {
               href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="relative px-8 py-4 rounded-full text-base font-bold text-white overflow-hidden flex items-center gap-2 group"
+              className="bg-primary relative px-8 py-4 rounded-full text-base font-bold text-white overflow-hidden flex items-center gap-2 group"
               style={{
-                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
                 boxShadow:
                   "0 0 40px rgba(99,102,241,0.45), inset 0 1px 0 rgba(255,255,255,0.15)",
               }}
@@ -668,9 +667,9 @@ function HeroV2() {
                   href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.96 }}
-                  className="relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white overflow-hidden"
+                  className="bg-primary relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white overflow-hidden"
                   style={{
-                    background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                    // background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
                     boxShadow: "0 8px 32px rgba(99,102,241,0.35)",
                   }}
                 >
@@ -1061,9 +1060,8 @@ function HeroV3() {
               href="/contact"
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.96 }}
-              className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full text-base font-bold text-white overflow-hidden"
+              className="bg-primary group relative inline-flex items-center gap-3 px-10 py-4 rounded-full text-base font-bold text-white overflow-hidden"
               style={{
-                background: "linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)",
                 boxShadow:
                   "0 0 50px rgba(99,102,241,0.4), inset 0 1px 0 rgba(255,255,255,0.15)",
               }}

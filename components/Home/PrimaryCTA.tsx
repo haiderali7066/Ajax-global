@@ -29,7 +29,7 @@ export default function PrimaryCTA() {
         </motion.p>
         <motion.div variants={vFadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
           <Mag>
-            <Button asChild size="lg" className="rounded-full px-8 h-14 text-lg font-bold group shadow-lg hover:scale-[1.04] transition-all duration-300" style={{ background: `linear-gradient(135deg,${C.primary},${C.accent})`, color: "#fff", boxShadow: `0 8px 32px rgba(99,102,241,0.30)` }}>
+            <Button asChild size="lg" className="rounded-full px-8 h-14 text-lg font-bold group shadow-lg hover:scale-[1.04] transition-all duration-300 bg-primary" >
               <Link href="/contact" className="flex items-center gap-2">
                 Book a Demo
                 <motion.span animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}><ArrowRight className="w-4 h-4" /></motion.span>
