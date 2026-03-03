@@ -4,6 +4,10 @@ import { Geist, Geist_Mono, DM_Sans as Dmsans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import SeoSchema from '@/components/SeoSchema'
 import './globals.css'
+import Footer from '@/components/Footer'
+import Header from '@/components/Header'
+
+
 
 const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
@@ -76,8 +80,10 @@ export default function RootLayout({
         <SeoSchema />
       </head>
       <body className={`font-sans antialiased`}>
+        <Header />
         {children}
         <Analytics />
+      <Footer />
       </body>
     </html>
   )

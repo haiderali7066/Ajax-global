@@ -1,4 +1,3 @@
-import Header from '@/components/Header'
 import HeroSection from '@/components/Home/HeroSection'
 import ServiceSelector from '@/components/Home/ServiceSelector'
 import InteractiveCategorySection from '@/components/Home/InteractiveCategorySection'
@@ -10,22 +9,25 @@ import AjaxAdvantage from '@/components/Home/AjaxAdvantage'
 import TeamImpact from '@/components/Home/TeamImpact'
 import TrustAwards from '@/components/Home/TrustAwards'
 import AIPlatformCTA from '@/components/Home/AIPlatformCTA'
-import WhyAjaxGlobal from '@/components/Home/WhyAjaxGlobal'
 import PrimaryCTA from '@/components/Home/PrimaryCTA'
 import VideoSection from "@/components/VideoSection";
-import Footer from '@/components/Footer'
+import WhyAjaxGlobal from '@/components/Home/WhyAjaxGlobal'
+
 import ChatbotWidget from '@/components/ChatbotWidget'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import HOSIntelliDesqTiltSplit from '@/components/Home/HOS+Intellidesq'
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
-      <Header />
+      
       <HeroSection />
       <ServiceSelector />
       <TeamSupportCards />
       <VideoSection />
+      
       <ProductLifecycle />
+      <HOSIntelliDesqTiltSplit />
       <BuiltForInnovators />
       {/* <SolutionsShowcase /> */}
       {/* <InteractiveCategorySection /> */}
@@ -35,7 +37,7 @@ export default function Home() {
       <AIPlatformCTA />
       {/* <WhyAjaxGlobal /> */}
       <PrimaryCTA />
-      <Footer />
+      
       <ChatbotWidget />
       <WhatsAppButton />
     </main>

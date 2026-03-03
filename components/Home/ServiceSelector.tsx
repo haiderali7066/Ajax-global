@@ -4,68 +4,360 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { C, vFadeUp, vStagger, vPop, Mag, Count } from "./shared";
 
-export default function ServiceSelector() {
-  const ref = useRef(null);
-  const iv = useInView(ref, { once: true, margin: "-80px" });
-  const [sel, setSel] = useState(0);
+interface SubService {
+  id: string;
+  label: string;
+  description: string;
+  href: string;
+  color: string;
+}
 
-  const services = [
-    { id: "intellidesq", short: "AI INTELLIGENT", label: "INTELLIDESQ™", href: "/intellidesq", headline: "Lead with clear foresight.", body: "Keep strategic goals on track with AI risk flagging and cross-org data to make real-time decisions.", stat: { v: 10, s: "×", l: "Faster Decisions" }, color: C.primary },
-    { id: "hos", short: "HUMAN OUTSOURCING", label: "HOS", href: "/hos", headline: "Elite teams. Zero friction.", body: "Purpose-built human teams, fully trained, performing from day one — guaranteed.", stat: { v: 2000, s: "+", l: "Professionals Deployed" }, color: "#10b981" },
-    { id: "msp", short: "MANAGED SERVICES", label: "MSP", href: "/services", headline: "IT you can actually rely on.", body: "Managed IT, cloud and cybersecurity that let your team focus on what matters most.", stat: { v: 99, s: "%", l: "Uptime Guaranteed" }, color: C.amber },
-    { id: "it", short: "MANAGED IT", label: "MANAGED IT", href: "/services", headline: "24/7 infrastructure coverage.", body: "Proactive IT management, monitoring, and support — keeping systems running perfectly.", stat: { v: 24, s: "/7", l: "IT Coverage" }, color: C.cyan },
-    { id: "cloud", short: "CLOUD SOLUTIONS", label: "CLOUD", href: "/services", headline: "Scale without limits.", body: "Enterprise-grade cloud infrastructure designed for availability, security, and speed.", stat: { v: 100, s: "%", l: "Cloud Uptime" }, color: "#3b82f6" },
-    { id: "cyber", short: "CYBERSECURITY", label: "CYBER", href: "/services", headline: "Locked down, always on.", body: "24/7 threat monitoring, endpoint protection and compliance — enterprise-grade, startup-friendly.", stat: { v: 100, s: "+", l: "Threats Blocked Daily" }, color: C.rose },
+interface MainService {
+  id: string;
+  label: string;
+  headline: string;
+  description: string;
+  color: string;
+  stat: {
+    v: number;
+    s: string;
+    l: string;
+  };
+  href: string;
+  subServices: SubService[];
+}
+
+export default function ServiceSelector() {
+  const ref = useRef<HTMLElement>(null);
+  const iv = useInView(ref, { once: true, margin: "-80px" });
+  const [selMain, setSelMain] = useState<number>(0);
+  const [selSub, setSelSub] = useState<number>(0);
+
+  const mainServices: MainService[] = [
+    {
+      id: "intellidesq",
+      label: "INTELLIDESQ™",
+      headline: "Automation that amplifies, not replaces.",
+      description:
+        "AI agents, workflows, and intelligent automation built to make your team unstoppable. From chat to voice to full business process automation.",
+      color: "#6366f1",
+      stat: { v: 99.8, s: "%", l: "AI Uptime Guaranteed" },
+      href: "/intellidesq",
+      subServices: [
+        {
+          id: "ai-voice",
+          label: "AI Voice Agents",
+          description: "24/7 call handling with human-like conversations",
+          href: "/intellidesq/voice",
+          color: "#7c3aed",
+        },
+        {
+          id: "ai-lead-gen",
+          label: "AI Lead Generation",
+          description: "Instant follow-up within 60 seconds",
+          href: "/intellidesq/lead-gen",
+          color: "#6366f1",
+        },
+        {
+          id: "ai-social",
+          label: "AI Social Media",
+          description: "24/7 engagement across all platforms",
+          href: "/intellidesq/social",
+          color: "#8b5cf6",
+        },
+        {
+          id: "ai-chat",
+          label: "AI Chat Agent",
+          description: "Instant customer support, always available",
+          href: "/intellidesq/chat",
+          color: "#a855f7",
+        },
+        {
+          id: "ai-workflow",
+          label: "AI Workflow Automation",
+          description: "Eliminate manual processes, scale without headcount",
+          href: "/intellidesq/workflow",
+          color: "#4f46e5",
+        },
+      ],
+    },
+    {
+      id: "hos",
+      label: "HUMAN OUTSOURCING SOLUTIONS",
+      headline: "Elite teams. Zero friction. Real results.",
+      description:
+        "Fully trained, managed remote teams that perform like your best in-house department. Reliability, professionalism, and results you can count on.",
+      color: "#10b981",
+      stat: { v: 99.9, s: "%", l: "Attendance Guaranteed" },
+      href: "/hos",
+      subServices: [
+        {
+          id: "sales-lead",
+          label: "Sales & Lead Generation",
+          description:
+            "Trained sales teams that inject discipline, persistence, and relentless follow-up into your pipeline. Multi-channel prospecting that turns cold leads into closed deals.",
+          href: "/hos/sales",
+          color: "#059669",
+        },
+        {
+          id: "customer-service",
+          label: "Customer Service",
+          description:
+            "Elite support teams trained as true brand ambassadors. 24/7 availability with your brand voice, protecting reputation and turning frustrated customers into loyal advocates.",
+          href: "/hos/customer-service",
+          color: "#10b981",
+        },
+        {
+          id: "property-mgmt",
+          label: "Property Management",
+          description:
+            "Bring order to chaos. Handle tenant calls, maintenance requests, move-ins, and rent coordination. Your operational backbone, so you focus on growth.",
+          href: "/hos/property-management",
+          color: "#0d9488",
+        },
+        {
+          id: "it-support",
+          label: "IT Support & Cybersecurity",
+          description:
+            "Full-time IT management, MSP infrastructure, and 24/7 cybersecurity monitoring. Managed IT, cloud solutions, and threat protection — enterprise-grade, startup-friendly.",
+          href: "/hos/it-support",
+          color: "#0891b2",
+        },
+        {
+          id: "social-media",
+          label: "Social Media Marketing",
+          description:
+            "Complete digital presence engineering. AI + human creativity blended into scroll-stopping content, consistent engagement, and measurable growth across all platforms.",
+          href: "/hos/social-media",
+          color: "#047857",
+        },
+      ],
+    },
   ];
-  const s = services[sel];
+
+  const main: MainService = mainServices[selMain];
+  const sub: SubService = main.subServices[selSub];
 
   return (
     <section className="py-16 sm:py-24 bg-white" ref={ref}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.h2 variants={vFadeUp} initial="hidden" animate={iv ? "show" : "hidden"} className="text-3xl sm:text-5xl md:text-6xl font-light text-center text-slate-900 mb-14">
-          Where would you like to <span className="font-extrabold text-indigo-600">start</span>
+
+        {/* Heading */}
+        <motion.h2
+          variants={vFadeUp}
+          initial="hidden"
+          animate={iv ? "show" : "hidden"}
+          className="text-3xl sm:text-5xl md:text-6xl font-light text-center text-slate-900 mb-14"
+        >
+          Where would you like to{" "}
+          <span className="font-extrabold" style={{ color: main.color }}>
+            start
+          </span>
         </motion.h2>
-        <motion.div variants={vStagger} initial="hidden" animate={iv ? "show" : "hidden"} className="flex flex-wrap justify-center gap-3 mb-14">
-          {services.map((sv, i) => (
-            <motion.button key={sv.id} variants={vPop} custom={i} onClick={() => setSel(i)} className="px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm transition-all duration-300 border-2" style={{ background: sel === i ? sv.color : "#fff", borderColor: sel === i ? sv.color : "#e2e8f0", color: sel === i ? "#fff" : C.fg, boxShadow: sel === i ? `0 6px 22px ${sv.color}44` : "none", transform: sel === i ? "scale(1.06)" : "scale(1)" }}>
-              <span className="block text-[9px] font-black opacity-60 leading-none mb-0.5">{sv.short}</span>
-              {sv.label}
-            </motion.button>
-          ))}
+
+        {/* ── Main Service Tabs ── */}
+        <motion.div
+          variants={vStagger}
+          initial="hidden"
+          animate={iv ? "show" : "hidden"}
+          className="flex flex-wrap justify-center gap-3 mb-10"
+        >
+          {mainServices.map((service, i) => {
+            const active = selMain === i;
+            return (
+              <motion.button
+                key={service.id}
+                variants={vPop}
+                custom={i}
+                onClick={() => {
+                  setSelMain(i);
+                  setSelSub(0);
+                }}
+                className="relative px-6 py-3 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+                style={{
+                  background: active ? service.color : "#fff",
+                  borderColor: service.color,
+                  color: active ? "#fff" : service.color,
+                  boxShadow: active
+                    ? `0 6px 24px ${service.color}55`
+                    : `0 1px 4px ${service.color}22`,
+                  transform: active ? "scale(1.06)" : "scale(1)",
+                  /* ensure text is always readable */
+                  fontWeight: 700,
+                }}
+              >
+                {service.label}
+              </motion.button>
+            );
+          })}
         </motion.div>
+
+        {/* ── Sub Service Pills ── */}
         <AnimatePresence mode="wait">
-          <motion.div key={sel} initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -22 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }} className="grid lg:grid-cols-2 gap-10 items-center">
-            <div className="rounded-3xl text-white p-9 sm:p-12 relative overflow-hidden shadow-xl" style={{ background: `linear-gradient(135deg,${s.color},${s.color}bb)` }}>
-              <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px)", backgroundSize: "32px 32px" }} />
-              <motion.div className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none" style={{ background: "rgba(255,255,255,0.12)", filter: "blur(40px)" }} animate={{ scale: [1, 1.18, 1] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} />
-              <div className="relative z-10 space-y-6">
-                <p className="text-white/50 text-xs font-black tracking-[.22em] uppercase">{s.short}</p>
-                <h3 className="text-3xl sm:text-4xl font-bold leading-tight">{s.headline}</h3>
-                <p className="text-white/85 text-lg leading-relaxed">{s.body}</p>
-                <div>
-                  <div className="text-3xl font-black"><Count to={s.stat.v} suf={s.stat.s} /></div>
-                  <div className="text-white/55 text-xs font-semibold mt-0.5">{s.stat.l}</div>
-                </div>
+          <motion.div
+            key={`sub-row-${selMain}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="flex flex-wrap justify-center gap-2 mb-14"
+          >
+            {main.subServices.map((service, i) => {
+              const active = selSub === i;
+              return (
+                <motion.button
+                  key={service.id}
+                  variants={vPop}
+                  custom={i}
+                  onClick={() => setSelSub(i)}
+                  className="px-4 py-2 rounded-xl font-semibold text-xs sm:text-sm transition-all duration-250 border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1"
+                  style={{
+                    background: active ? service.color : "#f1f5f9",
+                    borderColor: active ? service.color : "transparent",
+                    color: active ? "#ffffff" : "#334155",
+                    boxShadow: active
+                      ? `0 4px 14px ${service.color}44`
+                      : "none",
+                    transform: active ? "scale(1.04)" : "scale(1)",
+                  }}
+                >
+                  {service.label}
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* ── Content Section ── */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${selMain}-${selSub}`}
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -22 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="grid lg:grid-cols-2 gap-10 items-center"
+          >
+            {/* ── Left: Text ── */}
+            <div className="space-y-6 order-2 lg:order-1">
+              {/* Badge */}
+              <div
+                className="inline-flex items-center border-2 rounded-xl px-5 py-2.5 shadow-sm"
+                style={{ borderColor: main.color, background: `${main.color}0d` }}
+              >
+                <p
+                  className="text-xs font-black tracking-widest uppercase"
+                  style={{ color: main.color }}
+                >
+                  {main.label}
+                </p>
+              </div>
+
+              <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
+                {sub.label}
+              </h3>
+
+              <p className="text-lg text-slate-600 leading-relaxed">
+                {sub.description}
+              </p>
+
+              <p className="text-base text-slate-500 leading-relaxed">
+                {main.description}
+              </p>
+
+              {/* CTA */}
+              <div className="pt-2">
                 <Mag>
-                  <Button asChild size="lg" className="bg-white font-bold rounded-full px-7 h-12 hover:scale-[1.03] transition-all duration-300 group mt-2" style={{ color: s.color }}>
-                    <Link href={s.href} className="flex items-center gap-2">Talk to an Expert<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" /></Link>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="font-bold rounded-full px-8 h-12 hover:opacity-90 hover:scale-[1.03] transition-all duration-300 group text-white shadow-lg"
+                    style={{
+                      background: sub.color,
+                      boxShadow: `0 8px 28px ${sub.color}55`,
+                    }}
+                  >
+                    <Link href={sub.href} className="flex items-center gap-2">
+                      Learn More
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </Button>
                 </Mag>
               </div>
             </div>
-            <div className="space-y-7">
-              <div className="inline-block bg-white border border-slate-200 rounded-xl px-6 py-3 shadow-sm">
-                <p className="text-sm font-black text-slate-700 tracking-widest">HOLT · CAT</p>
+
+            {/* ── Right: Feature Card ── */}
+            <div
+              className="rounded-3xl text-white p-8 sm:p-12 relative overflow-hidden shadow-2xl order-1 lg:order-2 min-h-[360px] flex flex-col justify-between"
+              style={{
+                background: `linear-gradient(135deg, ${main.color} 0%, ${main.color}cc 100%)`,
+              }}
+            >
+              {/* Grid texture */}
+              <div
+                className="absolute inset-0 opacity-[0.06]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px)",
+                  backgroundSize: "32px 32px",
+                }}
+              />
+
+              {/* Glowing orb */}
+              <motion.div
+                className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none"
+                style={{
+                  background: "rgba(255,255,255,0.15)",
+                  filter: "blur(50px)",
+                }}
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              />
+
+              <div className="relative z-10 space-y-8">
+                {/* Stat */}
+                <div>
+                  <p className="text-white/60 text-xs font-black tracking-[.2em] uppercase mb-1">
+                    Key Metric
+                  </p>
+                  <div className="text-5xl font-black tabular-nums">
+                    <Count to={main.stat.v} suf={main.stat.s} />
+                  </div>
+                  <div className="text-white/65 text-sm font-semibold mt-1">
+                    {main.stat.l}
+                  </div>
+                </div>
+
+                <div className="border-t border-white/20 pt-6">
+                  <h4 className="text-2xl font-bold mb-3">{main.headline}</h4>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    {main.description}
+                  </p>
+                </div>
+
+                <Mag>
+                  <Button
+                    asChild
+                    size="lg"
+                    className="font-bold rounded-full px-7 h-12 w-full hover:scale-[1.03] hover:opacity-95 transition-all duration-300 group shadow-lg"
+                    style={{
+                      background: "#ffffff",
+                      color: main.color,
+                    }}
+                  >
+                    <Link
+                      href={main.href}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      Explore {main.label}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                </Mag>
               </div>
-              <h3 className="text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">$4M saved with optimised processes</h3>
-              <p className="text-lg text-slate-600 leading-relaxed">"AjaxGlobal gives us the visibility to get everyone on the same page and track all the moving parts of our projects."</p>
-              <div className="flex gap-1">{[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />)}</div>
-              <Link href="/services" className="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:gap-3 transition-all duration-300 group">
-                Learn more about our solutions<ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </div>
           </motion.div>
         </AnimatePresence>
