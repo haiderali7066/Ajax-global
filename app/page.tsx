@@ -16,6 +16,7 @@ import WhyAjaxGlobal from '@/components/Home/WhyAjaxGlobal'
 import ChatbotWidget from '@/components/ChatbotWidget'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import HOSIntelliDesqTiltSplit from '@/components/Home/HOS+Intellidesq'
+import N8nWorkflowShowcase from '@/components/N8nworkflowshowcase'
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
       <ServiceSelector />
       <TeamSupportCards />
       <VideoSection />
+      <N8nWorkflowShowcase/>
       
       <ProductLifecycle />
       <HOSIntelliDesqTiltSplit />
@@ -37,7 +39,6 @@ export default function Home() {
       <AIPlatformCTA />
       {/* <WhyAjaxGlobal /> */}
       <PrimaryCTA />
-      
       <ChatbotWidget />
       <WhatsAppButton />
     </main>
