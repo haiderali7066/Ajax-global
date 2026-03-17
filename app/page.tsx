@@ -1,4 +1,4 @@
-import HeroSection from '@/components/Home/HeroSection'
+import HeroSection from '@/components/Home/HeroNeuralGrid'
 import ServiceSelector from '@/components/Home/ServiceSelector'
 import InteractiveCategorySection from '@/components/Home/InteractiveCategorySection'
 import ProductLifecycle from '@/components/Home/ProductLifecycle'
@@ -25,19 +25,18 @@ export default function Home() {
       <HeroSection />
       <ServiceSelector />
       <TeamSupportCards />
-      <VideoSection />
       <N8nWorkflowShowcase/>
-      
-      <ProductLifecycle />
       <HOSIntelliDesqTiltSplit />
-      <BuiltForInnovators />
+      <ProductLifecycle />
+      {/* <VideoSection /> */}
+      {/* <BuiltForInnovators /> */}
       {/* <SolutionsShowcase /> */}
       {/* <InteractiveCategorySection /> */}
+      {/* <WhyAjaxGlobal /> */}
       <AjaxAdvantage />
       <TeamImpact />
       <TrustAwards />
-      <AIPlatformCTA />
-      {/* <WhyAjaxGlobal /> */}
+      {/* <AIPlatformCTA /> */}
       <PrimaryCTA />
       <ChatbotWidget />
       <WhatsAppButton />

@@ -33,7 +33,7 @@ export default function AjaxAdvantage() {
   ];
 
   return (
-    <section ref={secRef} className="py-20 sm:py-32 bg-slate-50 overflow-hidden relative">
+    <section ref={secRef} className="py-5  bg-slate-50 overflow-hidden relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div variants={vFadeLeft} initial="hidden" animate={iv ? "show" : "hidden"} className="max-w-3xl mb-20">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-light text-slate-900 tracking-tight mb-6">

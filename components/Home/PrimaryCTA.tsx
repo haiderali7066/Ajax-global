@@ -12,7 +12,7 @@ export default function PrimaryCTA() {
   const iv = useInView(ref, { once: true, margin: "-60px" });
 
   return (
-    <section className="py-20 sm:py-32 bg-white relative overflow-hidden" ref={ref}>
+    <section className="py-10  relative overflow-hidden" ref={ref}>
       <motion.div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full pointer-events-none"
         style={{ background: "radial-gradient(ellipse,rgba(99,102,241,0.07) 0%,transparent 70%)" }}
