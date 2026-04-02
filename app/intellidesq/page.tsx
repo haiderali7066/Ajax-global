@@ -5,6 +5,7 @@ import TrustBar from "@/components/IntelliDesq/TrustBar";
 import StatsBar from "@/components/IntelliDesq/StatsBar";
 import ProblemSection from "@/components/IntelliDesq/ProblemSection";
 import WhatIsIntelliDesq from "@/components/IntelliDesq/WhatIsIntelliDesq";
+import IntelliDesqServices from "@/components/IntelliDesq/RolesWeProvide";
 import { CoreCapabilities, HowItWorks, IntelliDesqPlusHOS } from "@/components/IntelliDesq/CoreSections";
 import UseCases from "@/components/IntelliDesq/UseCases";
 import { FeatureSpotlight, LiveMetrics, Integrations, TestimonialsSection, IntelliDesqCTA } from "@/components/IntelliDesq/BottomSections";
@@ -170,6 +171,8 @@ export default function IntelliDesqPage() {
         <StatsBar />
         <ProblemSection />
         <WhatIsIntelliDesq />
+        <IntelliDesqServices />
+        
         <CoreCapabilities />
         <HowItWorks />
         <IntelliDesqPlusHOS />
