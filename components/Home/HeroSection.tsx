@@ -70,7 +70,7 @@ function Count({ to, suf = "" }) {
 }
 
 const STATS = [
-  { v: 2000, s: "+", l: "Professionals" },
+  { v: 200, s: "+", l: "Professionals" },
   { v: 15, s: "+", l: "Countries" },
   { v: 99, s: "%", l: "Uptime SLA" },
   { v: 7, s: "d", l: "Go-Live" },
@@ -225,13 +225,13 @@ function HeroV1() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center py-32">
+      <div className="relative z-10 flex flex-col items-center px-4 py-32 mx-auto text-center max-w-7xl sm:px-6 lg:px-8">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={loaded ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-12 cursor-default"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-12 border rounded-full cursor-default"
           style={{
             borderColor: "rgba(99,102,241,0.3)",
             background: "rgba(99,102,241,0.08)",
@@ -239,7 +239,7 @@ function HeroV1() {
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-sm font-medium text-slate-300 tracking-wide">
+          <span className="text-sm font-medium tracking-wide text-slate-300">
             AI Solutions — Live & Operational
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -291,7 +291,7 @@ function HeroV1() {
           initial={{ opacity: 0, y: 24 }}
           animate={titleVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 1.2 }}
-          className="max-w-2xl text-lg text-slate-400 font-normal mb-12 leading-relaxed"
+          className="max-w-2xl mb-12 text-lg font-normal leading-relaxed text-slate-400"
         >
           Everything your business needs to think, execute, and scale —<br />
           in one place.
@@ -302,14 +302,14 @@ function HeroV1() {
           initial={{ opacity: 0, y: 20 }}
           animate={titleVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 1.45 }}
-          className="flex flex-col sm:flex-row items-center gap-4 mb-20"
+          className="flex flex-col items-center gap-4 mb-20 sm:flex-row"
         >
           <Mag>
             <motion.a
               href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
-              className="bg-primary relative px-8 py-4 rounded-full text-base font-bold text-white overflow-hidden flex items-center gap-2 group"
+              className="relative flex items-center gap-2 px-8 py-4 overflow-hidden text-base font-bold text-white rounded-full bg-primary group"
               style={{
                 boxShadow:
                   "0 0 40px rgba(99,102,241,0.45), inset 0 1px 0 rgba(255,255,255,0.15)",
@@ -325,7 +325,7 @@ function HeroV1() {
               </motion.span>
               {/* Shimmer */}
               <motion.div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 transition-opacity opacity-0 group-hover:opacity-100"
                 style={{
                   background:
                     "linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%)",
@@ -343,7 +343,7 @@ function HeroV1() {
             href="/services"
             whileHover={{ scale: 1.03, borderColor: "rgba(99,102,241,0.6)" }}
             whileTap={{ scale: 0.97 }}
-            className="px-8 py-4 rounded-full text-base font-semibold text-slate-300 border flex items-center gap-2 transition-all duration-300"
+            className="flex items-center gap-2 px-8 py-4 text-base font-semibold transition-all duration-300 border rounded-full text-slate-300"
             style={{
               borderColor: "rgba(255,255,255,0.12)",
               background: "rgba(255,255,255,0.04)",
@@ -359,7 +359,7 @@ function HeroV1() {
           initial={{ opacity: 0 }}
           animate={titleVisible ? { opacity: 1 } : {}}
           transition={{ delay: 1.7, duration: 0.8 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto w-full"
+          className="grid w-full max-w-2xl grid-cols-2 gap-4 mx-auto sm:grid-cols-4"
         >
           {STATS.map((st, i) => (
             <motion.div
@@ -368,7 +368,7 @@ function HeroV1() {
               animate={titleVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 1.7 + i * 0.08 }}
               whileHover={{ y: -4, borderColor: "rgba(99,102,241,0.5)" }}
-              className="rounded-2xl p-4 text-center transition-all duration-300 cursor-default"
+              className="p-4 text-center transition-all duration-300 cursor-default rounded-2xl"
               style={{
                 background: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(255,255,255,0.08)",
@@ -391,7 +391,7 @@ function HeroV1() {
 
       {/* Scroll nudge */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute flex flex-col items-center gap-2 -translate-x-1/2 bottom-8 left-1/2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.4 }}
@@ -462,7 +462,7 @@ function HeroV2() {
     <section
       ref={heroRef}
       onMouseMove={onMouseMove}
-      className="relative overflow-hidden bg-white min-h-screen flex items-center"
+      className="relative flex items-center min-h-screen overflow-hidden bg-white"
       style={{ fontFamily: "'system-ui', sans-serif" }}
     >
       {/* Dot grid */}
@@ -477,7 +477,7 @@ function HeroV2() {
 
       {/* Cursor glow that follows mouse */}
       <motion.div
-        className="absolute pointer-events-none rounded-full"
+        className="absolute rounded-full pointer-events-none"
         style={{
           width: 400,
           height: 400,
@@ -512,13 +512,13 @@ function HeroV2() {
         />
       </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-32">
+      <div className="relative z-10 w-full px-4 py-32 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={ready ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 bg-white shadow-sm mb-12 hover:border-indigo-300 transition-colors duration-300"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-12 transition-colors duration-300 bg-white border rounded-full shadow-sm border-slate-200 hover:border-indigo-300"
         >
           <span className="text-sm font-medium text-slate-700">
             AI Solutions
@@ -533,7 +533,7 @@ function HeroV2() {
             {leftWords.map((w, i) => (
               <motion.span
                 key={i}
-                className="inline-block text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-slate-900 cursor-default"
+                className="inline-block text-5xl font-light tracking-tight cursor-default sm:text-6xl md:text-7xl text-slate-900"
                 initial={{ opacity: 0, x: -80 }}
                 animate={ready ? { opacity: 1, x: 0 } : {}}
                 transition={{
@@ -551,7 +551,7 @@ function HeroV2() {
               </motion.span>
             ))}
             <motion.span
-              className="inline-block text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-slate-900 cursor-default"
+              className="inline-block text-5xl font-light tracking-tight cursor-default sm:text-6xl md:text-7xl text-slate-900"
               initial={{ opacity: 0, x: 80 }}
               animate={ready ? { opacity: 1, x: 0 } : {}}
               transition={{
@@ -573,7 +573,7 @@ function HeroV2() {
             {rightWords.map((w, i) => (
               <motion.span
                 key={i}
-                className="inline-block text-5xl sm:text-6xl md:text-7xl font-light tracking-tight text-slate-900 cursor-default"
+                className="inline-block text-5xl font-light tracking-tight cursor-default sm:text-6xl md:text-7xl text-slate-900"
                 initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
                 animate={ready ? { opacity: 1, x: 0 } : {}}
                 transition={{
@@ -596,7 +596,7 @@ function HeroV2() {
             {bottomWords.map((w, i) => (
               <motion.span
                 key={i}
-                className="inline-block text-5xl sm:text-6xl md:text-7xl tracking-tight cursor-default"
+                className="inline-block text-5xl tracking-tight cursor-default sm:text-6xl md:text-7xl"
                 style={{
                   fontWeight: w === "&" || w === "Growth." ? 800 : 300,
                   color:
@@ -626,7 +626,7 @@ function HeroV2() {
           initial={{ opacity: 0 }}
           animate={ready ? { opacity: 1 } : {}}
           transition={{ delay: 0.9 }}
-          className="relative overflow-hidden mb-10 py-2 border-y border-slate-100"
+          className="relative py-2 mb-10 overflow-hidden border-y border-slate-100"
         >
           <div
             className="flex w-max"
@@ -637,21 +637,21 @@ function HeroV2() {
                 key={i}
                 className="inline-flex items-center gap-2 px-5 text-sm font-semibold text-slate-400 whitespace-nowrap"
               >
-                <span className="w-1 h-1 rounded-full bg-indigo-400" />
+                <span className="w-1 h-1 bg-indigo-400 rounded-full" />
                 {item}
               </span>
             ))}
           </div>
         </motion.div>
 
-        <div className="flex flex-col sm:flex-row sm:items-end gap-12">
+        <div className="flex flex-col gap-12 sm:flex-row sm:items-end">
           {/* Left: sub + CTA */}
           <div className="flex-1">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={ready ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 1.0, duration: 0.6 }}
-              className="text-xl text-slate-500 font-normal mb-8 max-w-md leading-relaxed"
+              className="max-w-md mb-8 text-xl font-normal leading-relaxed text-slate-500"
             >
               Everything your business needs to think, execute, and scale — in
               one place.
@@ -660,14 +660,14 @@ function HeroV2() {
               initial={{ opacity: 0, y: 20 }}
               animate={ready ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 1.15 }}
-              className="flex items-center gap-4 flex-wrap"
+              className="flex flex-wrap items-center gap-4"
             >
               <Mag>
                 <motion.a
                   href="/contact"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.96 }}
-                  className="bg-primary relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-bold text-white overflow-hidden"
+                  className="relative inline-flex items-center gap-2 px-8 py-4 overflow-hidden text-base font-bold text-white rounded-full bg-primary"
                   style={{
                     // background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
                     boxShadow: "0 8px 32px rgba(99,102,241,0.35)",
@@ -693,7 +693,7 @@ function HeroV2() {
             initial={{ opacity: 0, x: 40 }}
             animate={ready ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 1.1, duration: 0.7 }}
-            className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:flex sm:flex-col sm:gap-3"
+            className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:flex sm:flex-col sm:gap-3"
           >
             {STATS.map((st, i) => (
               <motion.div
@@ -705,7 +705,7 @@ function HeroV2() {
                 <div className="text-xl font-extrabold text-indigo-600">
                   <Count to={st.v} suf={st.s} />
                 </div>
-                <div className="text-xs text-slate-400 font-medium">{st.l}</div>
+                <div className="text-xs font-medium text-slate-400">{st.l}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -823,7 +823,7 @@ function HeroV3() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden min-h-screen flex items-center"
+      className="relative flex items-center min-h-screen overflow-hidden"
       style={{
         background:
           "linear-gradient(160deg, #0a0a14 0%, #080c1a 40%, #0c0a14 100%)",
@@ -944,7 +944,7 @@ function HeroV3() {
         return (
           <motion.div
             key={i}
-            className="absolute hidden lg:block pointer-events-none"
+            className="absolute hidden pointer-events-none lg:block"
             style={{
               ...pos,
               x: parallax.x * -18 * depth,
@@ -981,7 +981,7 @@ function HeroV3() {
         )}
       </AnimatePresence>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center py-32">
+      <div className="relative z-10 max-w-6xl px-4 py-32 mx-auto text-center sm:px-6 lg:px-8">
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
@@ -1000,7 +1000,7 @@ function HeroV3() {
             animate={{ scale: [1, 1.5, 1], opacity: [1, 0.5, 1] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           />
-          <span className="text-sm font-semibold text-slate-200 tracking-widest uppercase">
+          <span className="text-sm font-semibold tracking-widest uppercase text-slate-200">
             AI Solutions · Live
           </span>
           <motion.span
@@ -1037,7 +1037,7 @@ function HeroV3() {
 
         {/* Typewriter sub */}
         <div className="max-w-2xl mx-auto mb-12 min-h-[3.5rem]">
-          <p className="text-lg sm:text-xl text-slate-400 font-normal leading-relaxed">
+          <p className="text-lg font-normal leading-relaxed sm:text-xl text-slate-400">
             {typeText}
             <motion.span
               animate={{ opacity: [1, 0] }}
@@ -1053,14 +1053,14 @@ function HeroV3() {
           initial={{ opacity: 0, y: 24 }}
           animate={phase >= 2 ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+          className="flex flex-col items-center justify-center gap-4 mb-16 sm:flex-row"
         >
           <Mag>
             <motion.a
               href="/contact"
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.96 }}
-              className="bg-primary group relative inline-flex items-center gap-3 px-10 py-4 rounded-full text-base font-bold text-white overflow-hidden"
+              className="relative inline-flex items-center gap-3 px-10 py-4 overflow-hidden text-base font-bold text-white rounded-full bg-primary group"
               style={{
                 boxShadow:
                   "0 0 50px rgba(99,102,241,0.4), inset 0 1px 0 rgba(255,255,255,0.15)",
@@ -1091,7 +1091,7 @@ function HeroV3() {
               borderColor: "rgba(99,102,241,0.5)",
               color: "#818cf8",
             }}
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 text-base font-semibold transition-all duration-300 rounded-full"
             style={{
               border: "1px solid rgba(255,255,255,0.1)",
               color: "rgba(255,255,255,0.6)",
@@ -1104,7 +1104,7 @@ function HeroV3() {
         </motion.div>
 
         {/* Stats — flip-board style */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto">
+        <div className="grid max-w-2xl grid-cols-2 gap-4 mx-auto sm:grid-cols-4">
           {STATS.map((st, i) => (
             <div
               key={i}
@@ -1112,7 +1112,7 @@ function HeroV3() {
               style={{ perspective: "400px" }}
             >
               <motion.div
-                className="absolute inset-0 rounded-2xl flex flex-col items-center justify-center"
+                className="absolute inset-0 flex flex-col items-center justify-center rounded-2xl"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   border: "1px solid rgba(255,255,255,0.07)",
@@ -1152,7 +1152,7 @@ function HeroV3() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute flex flex-col items-center gap-2 -translate-x-1/2 bottom-8 left-1/2"
         initial={{ opacity: 0 }}
         animate={phase >= 2 ? { opacity: 1 } : {}}
         transition={{ delay: 2.0 }}
