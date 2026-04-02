@@ -63,24 +63,29 @@ export default function IntelliDesqRoleClient({ activeSlug }: { activeSlug: stri
   };
 
   return (
-    <div style={{ background: "#09090f", minHeight: "100vh" }}>
+    <div style={{ background: "#f7f6ff", minHeight: "100vh" }}>
 
       {/* Mobile top bar */}
       <div
         className="sticky top-0 z-30 flex items-center justify-between px-5 py-4 lg:hidden"
-        style={{ background: "#09090f", borderBottom: "1px solid #ffffff0d" }}
+        style={{
+          background: "rgba(247,246,255,0.85)",
+          backdropFilter: "blur(12px)",
+          borderBottom: "1px solid #e4e2f5",
+        }}
       >
         <Link
           href="/intellidesq#services"
-          className="inline-flex items-center gap-2 text-sm transition-colors text-white/50 hover:text-white"
-          style={{ textDecoration: "none", fontFamily: "'DM Sans', sans-serif" }}
+          className="inline-flex items-center gap-2 text-sm transition-colors"
+          style={{ textDecoration: "none", fontFamily: "'DM Sans', sans-serif", color: "#9896b8" }}
         >
-          <ArrowLeft className="w-4 h-4 text-pink-400" />
+          <ArrowLeft className="w-4 h-4 text-pink-500" />
           All Services
         </Link>
         <button
           onClick={() => setMobileNavOpen((v) => !v)}
-          className="p-1 transition-colors text-white/50 hover:text-white"
+          className="p-1 transition-colors"
+          style={{ color: "#9896b8" }}
           aria-label="Toggle menu"
         >
           {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -90,7 +95,7 @@ export default function IntelliDesqRoleClient({ activeSlug }: { activeSlug: stri
       {mobileNavOpen && (
         <div
           className="fixed inset-0 z-40 lg:hidden"
-          style={{ background: "rgba(0,0,0,0.7)" }}
+          style={{ background: "rgba(80,70,120,0.18)" }}
           onClick={() => setMobileNavOpen(false)}
         />
       )}
@@ -100,11 +105,12 @@ export default function IntelliDesqRoleClient({ activeSlug }: { activeSlug: stri
         className="fixed inset-y-0 left-0 z-50 overflow-y-auto lg:hidden"
         style={{
           width: 272,
-          background: "#0f0f1a",
-          borderRight: "1px solid #ffffff0d",
+          background: "#ffffff",
+          borderRight: "1px solid #e4e2f5",
           transform: mobileNavOpen ? "translateX(0)" : "translateX(-100%)",
           transition: "transform 0.28s cubic-bezier(0.22,1,0.36,1)",
           padding: "28px 16px",
+          boxShadow: "4px 0 24px rgba(100,90,180,0.08)",
         }}
       >
         <SidebarContent
@@ -127,9 +133,10 @@ export default function IntelliDesqRoleClient({ activeSlug }: { activeSlug: stri
             top: 0,
             height: "100vh",
             overflowY: "auto",
-            background: "#0f0f1a",
-            borderRight: "1px solid #ffffff0d",
+            background: "#ffffff",
+            borderRight: "1px solid #e4e2f5",
             padding: "28px 16px",
+            boxShadow: "2px 0 12px rgba(100,90,180,0.05)",
           }}
         >
           <SidebarContent
@@ -141,7 +148,7 @@ export default function IntelliDesqRoleClient({ activeSlug }: { activeSlug: stri
         </div>
 
         {/* Main content */}
-        <main style={{ flex: 1, minWidth: 0, padding: "48px 60px 96px", background: "#09090f" }}>
+        <main style={{ flex: 1, minWidth: 0, padding: "48px 60px 96px", background: "#f7f6ff" }}>
           <MainContent roles={intellidesqRoles} iconMap={iconMap} />
         </main>
       </div>
@@ -175,21 +182,40 @@ function SidebarContent({
       <Link
         href="/intellidesq#services"
         className="items-center hidden gap-2 lg:inline-flex mb-7 w-fit group"
-        style={{ fontFamily: "'DM Sans', sans-serif", color: "#ffffff50", fontSize: 13, textDecoration: "none" }}
+        style={{
+          fontFamily: "'DM Sans', sans-serif",
+          color: "#9896b8",
+          fontSize: 13,
+          textDecoration: "none",
+        }}
       >
-        <ArrowLeft className="w-3.5 h-3.5 text-pink-400 transition-transform group-hover:-translate-x-0.5" />
+        <ArrowLeft className="w-3.5 h-3.5 text-pink-500 transition-transform group-hover:-translate-x-0.5" />
         Back to services
       </Link>
 
       {/* Brand */}
-      <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: "1px solid #ffffff08" }}>
-        <p style={{ fontSize: 9, fontFamily: "'DM Mono', monospace", color: "#ec4899", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 5 }}>
+      <div style={{ marginBottom: 16, paddingBottom: 16, borderBottom: "1px solid #eeecfb" }}>
+        <p style={{
+          fontSize: 9,
+          fontFamily: "'DM Mono', monospace",
+          color: "#ec4899",
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+          marginBottom: 5,
+        }}>
           IntelliDesq
         </p>
-        <p style={{ fontSize: 15, fontFamily: "'Syne', sans-serif", fontWeight: 700, color: "#fff", lineHeight: 1.3, marginBottom: 3 }}>
+        <p style={{
+          fontSize: 15,
+          fontFamily: "'Syne', sans-serif",
+          fontWeight: 700,
+          color: "#0d0d1a",
+          lineHeight: 1.3,
+          marginBottom: 3,
+        }}>
           Our Services
         </p>
-        <p style={{ fontSize: 11, color: "#ffffff30", fontFamily: "'DM Sans', sans-serif" }}>
+        <p style={{ fontSize: 11, color: "#b0aed0", fontFamily: "'DM Sans', sans-serif" }}>
           {roles.length} services available
         </p>
       </div>
@@ -211,8 +237,8 @@ function SidebarContent({
                 gap: 10,
                 padding: "8px 10px",
                 borderRadius: 10,
-                background: isActive ? `${role.color}12` : "transparent",
-                border: `1px solid ${isActive ? role.color + "28" : "transparent"}`,
+                background: isActive ? `${role.color}0f` : "transparent",
+                border: `1px solid ${isActive ? role.color + "30" : "transparent"}`,
                 cursor: "pointer",
                 transition: "background 0.15s",
               }}
@@ -220,16 +246,17 @@ function SidebarContent({
               <div style={{
                 width: 28, height: 28, borderRadius: 8, flexShrink: 0,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                background: isActive ? `${role.color}20` : "#ffffff08",
-                border: `1px solid ${isActive ? role.color + "30" : "#ffffff0d"}`,
+                background: isActive ? `${role.color}18` : "#f0eef9",
+                border: `1px solid ${isActive ? role.color + "30" : "#e4e2f5"}`,
               }}>
-                <Icon style={{ width: 12, height: 12, color: isActive ? role.color : "#ffffff30" }} />
+                <Icon style={{ width: 12, height: 12, color: isActive ? role.color : "#b0aed0" }} />
               </div>
               <span style={{
-                flex: 1, fontSize: 12,
+                flex: 1,
+                fontSize: 12,
                 fontFamily: "'DM Sans', sans-serif",
                 fontWeight: isActive ? 600 : 400,
-                color: isActive ? "#fff" : "#ffffff40",
+                color: isActive ? "#0d0d1a" : "#9896b8",
                 lineHeight: 1.3,
               }}>
                 {role.title}
@@ -241,11 +268,23 @@ function SidebarContent({
       </nav>
 
       {/* Bottom CTA */}
-      <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid #ffffff08" }}>
-        <p style={{ fontSize: 12, fontWeight: 700, color: "#fff", fontFamily: "'Syne', sans-serif", marginBottom: 4 }}>
+      <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid #eeecfb" }}>
+        <p style={{
+          fontSize: 12,
+          fontWeight: 700,
+          color: "#0d0d1a",
+          fontFamily: "'Syne', sans-serif",
+          marginBottom: 4,
+        }}>
           Ready to start?
         </p>
-        <p style={{ fontSize: 11, fontFamily: "'DM Sans', sans-serif", color: "#ffffff30", marginBottom: 10, lineHeight: 1.5 }}>
+        <p style={{
+          fontSize: 11,
+          fontFamily: "'DM Sans', sans-serif",
+          color: "#b0aed0",
+          marginBottom: 10,
+          lineHeight: 1.5,
+        }}>
           Free discovery call, no commitment.
         </p>
         <Link
@@ -278,20 +317,39 @@ function MainContent({
   return (
     <>
       {/* Page heading */}
-      <div style={{ marginBottom: 48, paddingBottom: 36, borderBottom: "1px solid #ffffff0d" }}>
-        <p style={{ fontSize: 10, fontFamily: "'DM Mono', monospace", color: "#ec4899", letterSpacing: "0.22em", textTransform: "uppercase", marginBottom: 10 }}>
+      <div style={{ marginBottom: 48, paddingBottom: 36, borderBottom: "1px solid #e4e2f5" }}>
+        <p style={{
+          fontSize: 10,
+          fontFamily: "'DM Mono', monospace",
+          color: "#ec4899",
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+          marginBottom: 10,
+        }}>
           IntelliDesq · Services
         </p>
         <h1 style={{
-          fontWeight: 900, fontSize: "clamp(1.8rem, 3.2vw, 2.8rem)",
-          color: "#fff", lineHeight: 1.1, letterSpacing: "-0.025em", marginBottom: 12,
+          fontWeight: 900,
+          fontSize: "clamp(1.8rem, 3.2vw, 2.8rem)",
+          color: "#0d0d1a",
+          lineHeight: 1.1,
+          letterSpacing: "-0.025em",
+          marginBottom: 12,
           fontFamily: "'Syne', sans-serif",
         }}>
           Every service,{" "}
           <span style={{ color: "#ec4899" }}>delivered.</span>
         </h1>
-        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#ffffff40", fontWeight: 300, lineHeight: 1.75, maxWidth: 500 }}>
-          Browse all {roles.length} services below. Click any service in the sidebar to jump straight to it, or scroll through at your own pace.
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 14,
+          color: "#9896b8",
+          fontWeight: 300,
+          lineHeight: 1.75,
+          maxWidth: 500,
+        }}>
+          Browse all {roles.length} services below. Click any service in the sidebar to jump straight to it,
+          or scroll through at your own pace.
         </p>
       </div>
 
@@ -307,24 +365,34 @@ function MainContent({
                 <div style={{
                   width: 52, height: 52, borderRadius: 14, flexShrink: 0,
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  background: `${role.color}12`, border: `1.5px solid ${role.color}28`,
+                  background: `${role.color}10`,
+                  border: `1.5px solid ${role.color}28`,
                 }}>
                   <Icon style={{ width: 22, height: 22, color: role.color }} />
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6, flexWrap: "wrap" }}>
                     <span style={{
-                      fontSize: 9, fontFamily: "'DM Mono', monospace",
-                      color: role.color, letterSpacing: "0.18em", textTransform: "uppercase",
-                      padding: "3px 10px", borderRadius: 999,
-                      background: `${role.color}10`, border: `1px solid ${role.color}25`,
+                      fontSize: 9,
+                      fontFamily: "'DM Mono', monospace",
+                      color: role.color,
+                      letterSpacing: "0.18em",
+                      textTransform: "uppercase",
+                      padding: "3px 10px",
+                      borderRadius: 999,
+                      background: `${role.color}0e`,
+                      border: `1px solid ${role.color}28`,
                     }}>
                       {String(idx + 1).padStart(2, "0")} / {String(roles.length).padStart(2, "0")}
                     </span>
                   </div>
                   <h2 style={{
-                    fontWeight: 700, fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)",
-                    color: "#fff", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 4,
+                    fontWeight: 700,
+                    fontSize: "clamp(1.3rem, 2.2vw, 1.8rem)",
+                    color: "#0d0d1a",
+                    lineHeight: 1.15,
+                    letterSpacing: "-0.02em",
+                    marginBottom: 4,
                     fontFamily: "'Syne', sans-serif",
                   }}>
                     {role.title}
@@ -336,10 +404,22 @@ function MainContent({
               </div>
 
               {/* Divider */}
-              <div style={{ height: 1, background: `linear-gradient(90deg, ${role.color}50, ${role.color}10, transparent)`, marginBottom: 22 }} />
+              <div style={{
+                height: 1,
+                background: `linear-gradient(90deg, ${role.color}50, ${role.color}15, transparent)`,
+                marginBottom: 22,
+              }} />
 
               {/* Overview */}
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#ffffff60", fontWeight: 300, lineHeight: 1.8, maxWidth: 680, marginBottom: 26 }}>
+              <p style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 14,
+                color: "#6e6e8f",
+                fontWeight: 300,
+                lineHeight: 1.8,
+                maxWidth: 680,
+                marginBottom: 26,
+              }}>
                 {role.overview}
               </p>
 
@@ -347,14 +427,28 @@ function MainContent({
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4" style={{ marginBottom: 26 }}>
                 {role.stats.map((stat, i) => (
                   <div key={i} style={{
-                    background: "#0f0f1a", border: "1px solid #ffffff0d",
-                    borderRadius: 12, padding: "16px 18px",
-                    boxShadow: `0 0 0 1px ${role.color}00`,
+                    background: "#ffffff",
+                    border: "1px solid #e4e2f5",
+                    borderRadius: 12,
+                    padding: "16px 18px",
+                    boxShadow: "0 2px 8px rgba(100,90,180,0.05)",
                   }}>
-                    <p style={{ fontWeight: 800, fontSize: "clamp(1.3rem,2vw,1.6rem)", color: role.color, lineHeight: 1, marginBottom: 6, fontFamily: "'Syne', sans-serif" }}>
+                    <p style={{
+                      fontWeight: 800,
+                      fontSize: "clamp(1.3rem,2vw,1.6rem)",
+                      color: role.color,
+                      lineHeight: 1,
+                      marginBottom: 6,
+                      fontFamily: "'Syne', sans-serif",
+                    }}>
                       {stat.value}
                     </p>
-                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#ffffff30", lineHeight: 1.4 }}>
+                    <p style={{
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 11,
+                      color: "#b0aed0",
+                      lineHeight: 1.4,
+                    }}>
                       {stat.label}
                     </p>
                   </div>
@@ -362,32 +456,49 @@ function MainContent({
               </div>
 
               {/* What's Included */}
-              <p style={{ fontWeight: 700, fontSize: 13, color: "#ffffff70", marginBottom: 12, letterSpacing: "0.01em", fontFamily: "'Syne', sans-serif" }}>
+              <p style={{
+                fontWeight: 700,
+                fontSize: 13,
+                color: "#6e6e8f",
+                marginBottom: 12,
+                letterSpacing: "0.01em",
+                fontFamily: "'Syne', sans-serif",
+              }}>
                 What&apos;s included
               </p>
               <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3" style={{ marginBottom: 26 }}>
                 {role.features.map((feat, i) => (
-                  <div key={i} style={{
-                    background: "#0f0f1a", border: "1px solid #ffffff0d",
-                    borderRadius: 12, padding: "14px 16px",
-                    transition: "border-color 0.2s, box-shadow 0.2s",
-                  }}
+                  <div
+                    key={i}
+                    style={{
+                      background: "#ffffff",
+                      border: "1px solid #e4e2f5",
+                      borderRadius: 12,
+                      padding: "14px 16px",
+                      transition: "border-color 0.2s, box-shadow 0.2s",
+                    }}
                     onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = `${role.color}35`;
-                      (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${role.color}10`;
+                      (e.currentTarget as HTMLElement).style.borderColor = `${role.color}40`;
+                      (e.currentTarget as HTMLElement).style.boxShadow = `0 4px 20px ${role.color}12`;
                     }}
                     onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = "#ffffff0d";
+                      (e.currentTarget as HTMLElement).style.borderColor = "#e4e2f5";
                       (e.currentTarget as HTMLElement).style.boxShadow = "none";
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                       <CheckCircle2 style={{ width: 14, height: 14, color: role.color, flexShrink: 0, marginTop: 2 }} />
                       <div>
-                        <p style={{ fontWeight: 600, fontSize: 12, color: "#fff", marginBottom: 3, lineHeight: 1.3 }}>
+                        <p style={{ fontWeight: 600, fontSize: 12, color: "#0d0d1a", marginBottom: 3, lineHeight: 1.3 }}>
                           {feat.title}
                         </p>
-                        <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: "#ffffff35", lineHeight: 1.6, fontWeight: 300 }}>
+                        <p style={{
+                          fontFamily: "'DM Sans', sans-serif",
+                          fontSize: 11,
+                          color: "#9896b8",
+                          lineHeight: 1.6,
+                          fontWeight: 300,
+                        }}>
                           {feat.desc}
                         </p>
                       </div>
@@ -400,13 +511,28 @@ function MainContent({
               <div className="grid gap-3 sm:grid-cols-3" style={{ marginBottom: 26 }}>
 
                 {/* Use Cases */}
-                <div style={{ background: "#0f0f1a", border: "1px solid #ffffff0d", borderRadius: 13, padding: "18px 20px" }}>
-                  <p style={{ fontWeight: 700, fontSize: 12, color: "#ffffff70", marginBottom: 12, fontFamily: "'Syne', sans-serif" }}>Use cases</p>
+                <div style={{
+                  background: "#ffffff",
+                  border: "1px solid #e4e2f5",
+                  borderRadius: 13,
+                  padding: "18px 20px",
+                  boxShadow: "0 2px 8px rgba(100,90,180,0.04)",
+                }}>
+                  <p style={{
+                    fontWeight: 700, fontSize: 12, color: "#6e6e8f",
+                    marginBottom: 12, fontFamily: "'Syne', sans-serif",
+                  }}>Use cases</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {role.useCases.map((uc, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: role.color, flexShrink: 0, marginTop: 5 }} />
-                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#ffffff45", lineHeight: 1.5, fontWeight: 300 }}>
+                        <span style={{
+                          width: 5, height: 5, borderRadius: "50%",
+                          background: role.color, flexShrink: 0, marginTop: 5,
+                        }} />
+                        <span style={{
+                          fontFamily: "'DM Sans', sans-serif",
+                          fontSize: 12, color: "#9896b8", lineHeight: 1.5, fontWeight: 300,
+                        }}>
                           {uc}
                         </span>
                       </div>
@@ -415,14 +541,25 @@ function MainContent({
                 </div>
 
                 {/* Industries */}
-                <div style={{ background: "#0f0f1a", border: "1px solid #ffffff0d", borderRadius: 13, padding: "18px 20px" }}>
-                  <p style={{ fontWeight: 700, fontSize: 12, color: "#ffffff70", marginBottom: 12, fontFamily: "'Syne', sans-serif" }}>Industries served</p>
+                <div style={{
+                  background: "#ffffff",
+                  border: "1px solid #e4e2f5",
+                  borderRadius: 13,
+                  padding: "18px 20px",
+                  boxShadow: "0 2px 8px rgba(100,90,180,0.04)",
+                }}>
+                  <p style={{
+                    fontWeight: 700, fontSize: 12, color: "#6e6e8f",
+                    marginBottom: 12, fontFamily: "'Syne', sans-serif",
+                  }}>Industries served</p>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                     {role.industries.map((ind, i) => (
                       <span key={i} style={{
                         fontFamily: "'DM Mono', monospace", fontSize: 10, fontWeight: 500,
                         padding: "5px 11px", borderRadius: 999,
-                        color: role.color, background: `${role.color}10`, border: `1px solid ${role.color}25`,
+                        color: role.color,
+                        background: `${role.color}0e`,
+                        border: `1px solid ${role.color}28`,
                       }}>
                         {ind}
                       </span>
@@ -431,19 +568,35 @@ function MainContent({
                 </div>
 
                 {/* Deliverables */}
-                <div style={{ background: "#0f0f1a", border: "1px solid #ffffff0d", borderRadius: 13, padding: "18px 20px" }}>
-                  <p style={{ fontWeight: 700, fontSize: 12, color: "#ffffff70", marginBottom: 12, fontFamily: "'Syne', sans-serif" }}>What you get</p>
+                <div style={{
+                  background: "#ffffff",
+                  border: "1px solid #e4e2f5",
+                  borderRadius: 13,
+                  padding: "18px 20px",
+                  boxShadow: "0 2px 8px rgba(100,90,180,0.04)",
+                }}>
+                  <p style={{
+                    fontWeight: 700, fontSize: 12, color: "#6e6e8f",
+                    marginBottom: 12, fontFamily: "'Syne', sans-serif",
+                  }}>What you get</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                     {role.deliverables.map((d, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                         <span style={{
                           width: 16, height: 16, borderRadius: "50%", flexShrink: 0,
-                          background: `${role.color}12`, border: `1px solid ${role.color}28`,
+                          background: `${role.color}10`,
+                          border: `1px solid ${role.color}28`,
                           display: "flex", alignItems: "center", justifyContent: "center", marginTop: 1,
                         }}>
-                          <span style={{ width: 5, height: 5, borderRadius: "50%", background: role.color, display: "block" }} />
+                          <span style={{
+                            width: 5, height: 5, borderRadius: "50%",
+                            background: role.color, display: "block",
+                          }} />
                         </span>
-                        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#ffffff45", lineHeight: 1.5, fontWeight: 300 }}>
+                        <span style={{
+                          fontFamily: "'DM Sans', sans-serif",
+                          fontSize: 12, color: "#9896b8", lineHeight: 1.5, fontWeight: 300,
+                        }}>
                           {d}
                         </span>
                       </div>
@@ -454,9 +607,9 @@ function MainContent({
 
               {/* CTA */}
               <div style={{
-                background: "#0f0f1a",
+                background: "#ffffff",
                 borderRadius: 14,
-                border: "1px solid #ffffff0d",
+                border: "1px solid #e4e2f5",
                 borderLeft: `3px solid ${role.color}`,
                 padding: "22px 24px",
                 display: "flex",
@@ -464,15 +617,26 @@ function MainContent({
                 justifyContent: "space-between",
                 gap: 16,
                 flexWrap: "wrap",
+                boxShadow: "0 4px 16px rgba(100,90,180,0.06)",
               }}>
                 <div>
-                  <p style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, color: role.color, letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 6 }}>
+                  <p style={{
+                    fontFamily: "'DM Mono', monospace",
+                    fontSize: 9, color: role.color,
+                    letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 6,
+                  }}>
                     Ready to start?
                   </p>
-                  <p style={{ fontWeight: 700, fontSize: 15, color: "#fff", lineHeight: 1.3, marginBottom: 4, fontFamily: "'Syne', sans-serif" }}>
+                  <p style={{
+                    fontWeight: 700, fontSize: 15, color: "#0d0d1a",
+                    lineHeight: 1.3, marginBottom: 4, fontFamily: "'Syne', sans-serif",
+                  }}>
                     Build your {role.title} project today.
                   </p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#ffffff35", fontWeight: 300 }}>
+                  <p style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 12, color: "#9896b8", fontWeight: 300,
+                  }}>
                     Free discovery call — we scope everything before you commit.
                   </p>
                 </div>
@@ -482,7 +646,8 @@ function MainContent({
                     display: "inline-flex", alignItems: "center", gap: 7,
                     padding: "10px 20px", borderRadius: 10,
                     background: "#ec4899",
-                    fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: "#fff",
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: 13, fontWeight: 700, color: "#fff",
                     textDecoration: "none", flexShrink: 0, whiteSpace: "nowrap",
                   }}
                 >
