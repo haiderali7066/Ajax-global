@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /.next/
+Disallow: /private/
+
+Sitemap: https://ajaxglobal.com/sitemap.xml
+
+# Crawler delays
+User-agent: Googlebot
+Crawl-delay: 0
+
+User-agent: bingbot
+Crawl-delay: 1

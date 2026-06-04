@@ -16,7 +16,7 @@ const CARDS = [
   {
     Icon:        Phone,
     title:       "Business Phone",
-    value:       "+1 (555) 123-4567",
+    value:       "+1 (346) 428-0370",
     description: "Speak directly with a strategy consultant",
     accent:      "#059669",
   },
@@ -30,7 +30,7 @@ const CARDS = [
   {
     Icon:        Globe,
     title:       "Countries Served",
-    value:       "USA · Canada · AU · UAE",
+    value:       "1500 N. GRANT ST, STE R, Denver, CO 80203, US",
     description: "International presence, local expertise",
     accent:      "#d97706",
   },

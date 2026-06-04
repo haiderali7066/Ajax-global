@@ -15,48 +15,52 @@ import {
 
 const footerLinks = {
   AI: [
-    { name: "IntelliDesq™", href: "/intellidesq" },
-    { name: "AI Chat Agents", href: "#" },
-    { name: "AI Voice Agents", href: "#" },
-    { name: "AI Lead Generation", href: "#" },
-    { name: "AI Social Media Automation", href: "#" },
-    { name: "AI Youtube Automation", href: "#" },
-    { name: "AI Workflow", href: "#" },
-    { name: "Miscellaneous", href: "#" },
+    { name: "IntelliDesq™",               href: "/intellidesq" },
+    { name: "AI & Automation",           href: "/services-detailed#ai-automation" },
+    { name: "Sales & Lead Generation",   href: "/services-detailed#sales-lead-generation" },
+    { name: "SEO & Social Media",        href: "/services-detailed#seo-social-media" },
+    { name: "Custom Solutions",          href: "/services-detailed#custom-solutions" },
   ],
   HOS: [
-    { name: "Customer Service", href: "#" },
-    { name: "Custom Remote Teams", href: "#" },
-    { name: "Client Retention", href: "#" },
-    { name: "Scheduling & Dispatching", href: "#" },
-    { name: "Property Management Support", href: "#" },
-    { name: "E-Commerce Management", href: "#" },
-    { name: "Sales & Lead Generation", href: "#" },
-    { name: "SEO", href: "#" },
-    { name: "Social Media Marketing", href: "#" },
-    { name: "Virtual & Admin Assistant", href: "#" },
-    { name: "IT Support & Cybersecurity", href: "#" },
+    { name: "Customer Support",          href: "/services-detailed#customer-support" },
+    { name: "Custom Remote Teams",       href: "/services-detailed#custom-remote-teams" },
+    { name: "Client Retention",          href: "/services-detailed#client-retention" },
+    { name: "Scheduling & Dispatch",     href: "/services-detailed#scheduling-dispatch" },
+    { name: "Property Management",       href: "/services-detailed#property-management" },
+    { name: "E-Commerce Management",     href: "/services-detailed#ecommerce-management" },
+    { name: "Sales & Lead Generation",   href: "/services-detailed#sales-lead-generation" },
+    { name: "SEO & Content",             href: "/services-detailed#seo-content" },
+    { name: "SEO & Social Media",        href: "/services-detailed#seo-social-media" },
+    { name: "Virtual & Admin Assistants", href: "/services-detailed#virtual-admin-assistants" },
+    { name: "IT & Cybersecurity",        href: "/services-detailed#it-cybersecurity" },
   ],
   Products: [
-    { name: "Work Management", href: "#" },
-    { name: "CRM", href: "#" },
-    { name: "Campaigns", href: "#" },
-    { name: "Services", href: "#" },
+    { name: "Work Management",           href: "/services-detailed#custom-solutions" },
+    { name: "CRM & RevOps",              href: "/services-detailed#crm-revops" },
+    { name: "Growth Marketing",          href: "/services-detailed#growth-marketing" },
+    { name: "Services",                  href: "/services-detailed" },
   ],
   Features: [
-    { name: "HOS", href: "/hos" },
-    { name: "AI", href: "#" },
-    { name: "Integrations", href: "#" },
-    { name: "Automations", href: "#" },
+    { name: "HOS",                       href: "/hos" },
+    { name: "AI",                        href: "/intellidesq" },
+    { name: "Integrations",              href: "/services-detailed#ai-automation" },
+    { name: "Automations",               href: "/services-detailed#ai-automation" },
   ],
+
 };
 
 const socials = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "YouTube" },
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Twitter,   href: "https://twitter.com/ajaxglobal",   label: "Twitter" },
+  { icon: Linkedin,  href: "https://linkedin.com/company/ajaxglobal", label: "LinkedIn" },
+  { icon: Instagram, href: "https://instagram.com/ajaxglobal", label: "Instagram" },
+  { icon: Youtube,   href: "https://youtube.com/@ajaxglobal",  label: "YouTube" },
+  { icon: Facebook,  href: "https://facebook.com/ajaxglobal",  label: "Facebook" },
+];
+
+const legalLinks = [
+  { name: "Privacy Policy",   href: "/privacy-policy" },
+  { name: "Terms of Service", href: "/terms-of-service" },
+  { name: "Cookie Policy",    href: "/cookie-policy" },
 ];
 
 /* ─── Liquid Wave — dark navy tone ──────────────────────────────────── */
@@ -134,12 +138,12 @@ function LiquidWave() {
 /* ─── Ambient floating orbs ─────────────────────────────────────────── */
 function AmbientOrbs() {
   const orbs = [
-    { size: 200, top: "8%", left: "4%", dur: "11s", delay: "0s" },
+    { size: 200, top: "8%",  left: "4%",  dur: "11s", delay: "0s" },
     { size: 130, top: "55%", left: "18%", dur: "14s", delay: "2s" },
-    { size: 240, top: "12%", left: "68%", dur: "9s", delay: "1s" },
-    { size: 90, top: "72%", left: "87%", dur: "12s", delay: "3.5s" },
+    { size: 240, top: "12%", left: "68%", dur: "9s",  delay: "1s" },
+    { size: 90,  top: "72%", left: "87%", dur: "12s", delay: "3.5s" },
     { size: 160, top: "40%", left: "48%", dur: "10s", delay: "5s" },
-    { size: 70, top: "83%", left: "36%", dur: "13s", delay: "0.8s" },
+    { size: 70,  top: "83%", left: "36%", dur: "13s", delay: "0.8s" },
   ];
   return (
     <div
@@ -176,7 +180,7 @@ export default function Footer() {
 
       <footer
         className="relative overflow-hidden"
-        style={{ backgroundColor: "#0f172a" }} /* slate-900 */
+        style={{ backgroundColor: "#0f172a" }}
       >
         <AmbientOrbs />
 
@@ -195,23 +199,17 @@ export default function Footer() {
             {/* Logo + tagline */}
             <div className="space-y-3 max-w-xs">
               <Link href="/" className="inline-flex items-center gap-2 group">
-                <span className="text-2xl font-extrabold tracking-tight text-white  transition-colors duration-300">
+                <span className="text-2xl font-extrabold tracking-tight text-white transition-colors duration-300">
                   AJAX
                 </span>
-                <div
-                  className="bg-primary w-7 h-7 rounded flex items-center justify-center font-extrabold text-white text-sm shadow-lg transition-transform duration-300 group-hover:scale-110"
-                  
-                >
+                <div className="bg-primary w-7 h-7 rounded flex items-center justify-center font-extrabold text-white text-sm shadow-lg transition-transform duration-300 group-hover:scale-110">
                   G
                 </div>
                 <span className="text-2xl font-light text-slate-400 group-hover:text-slate-200 transition-colors duration-300">
                   lobal
                 </span>
               </Link>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "#94a3b8" }}
-              >
+              <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
                 Full-service outsourcing & AI solutions — blending human talent
                 with artificial intelligence to help businesses scale smarter.
               </p>
@@ -235,22 +233,11 @@ export default function Footer() {
                     border: "1px solid #334155",
                     color: "#e2e8f0",
                   }}
-                  onFocus={(e) =>
-                    (e.currentTarget.style.borderColor = "#4536c9")
-                  }
-                  onBlur={(e) =>
-                    (e.currentTarget.style.borderColor = "#334155")
-                  }
+                  onFocus={(e) => (e.currentTarget.style.borderColor = "#4536c9")}
+                  onBlur={(e)  => (e.currentTarget.style.borderColor = "#334155")}
                 />
                 <button
                   className="bg-primary shrink-0 inline-flex items-center gap-1.5 rounded-xl font-semibold text-sm px-5 py-2.5 text-white transition-all duration-200 hover:scale-105 active:scale-100"
-                  // style={{ backgroundColor: "#5528f7" }}
-                  // onMouseEnter={(e) =>
-                  //   (e.currentTarget.style.backgroundColor = "#6b38f8")
-                  // }
-                  // onMouseLeave={(e) =>
-                  //   (e.currentTarget.style.backgroundColor = "#623af3")
-                  // }
                 >
                   Subscribe
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -272,36 +259,28 @@ export default function Footer() {
               <ul className="space-y-3 text-sm">
                 <li>
                   <a
-                    href="https://maps.google.com"
+                    href="https://maps.google.com/?q=451+Wall+Street+London+UK"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-start gap-2.5 transition-colors duration-200 group"
                     style={{ color: "#94a3b8" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#4536c9")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "#94a3b8")
-                    }
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                   >
                     <MapPin className="w-4 h-4 mt-0.5 shrink-0 opacity-50 group-hover:opacity-100" />
-                    451 Wall Street, UK, London
+                    1500 N. GRANT ST, STE R, Denver, CO 80203, US
                   </a>
                 </li>
                 <li>
                   <a
-                    href="tel:+10643321233"
+                    href="tel:+13464280370"
                     className="flex items-center gap-2.5 transition-colors duration-200"
                     style={{ color: "#94a3b8" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#4536c9")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "#94a3b8")
-                    }
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                   >
                     <Phone className="w-4 h-4 shrink-0 opacity-50" />
-                    (064) 332-1233
+                    +1 (346) 428-0370
                   </a>
                 </li>
                 <li>
@@ -309,12 +288,8 @@ export default function Footer() {
                     href="mailto:info@ajaxglobal.com"
                     className="flex items-center gap-2.5 transition-colors duration-200"
                     style={{ color: "#94a3b8" }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#4536c9")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "#94a3b8")
-                    }
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                   >
                     <Mail className="w-4 h-4 shrink-0 opacity-50" />
                     info@ajaxglobal.com
@@ -338,12 +313,8 @@ export default function Footer() {
                       href={link.href}
                       className="text-sm inline-block transition-all duration-200 hover:translate-x-0.5"
                       style={{ color: "#94a3b8" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "#4536c9")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "#94a3b8")
-                      }
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                     >
                       {link.name}
                     </Link>
@@ -367,12 +338,8 @@ export default function Footer() {
                       href={link.href}
                       className="text-sm inline-block transition-all duration-200 hover:translate-x-0.5 leading-snug"
                       style={{ color: "#94a3b8" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "#4536c9")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "#94a3b8")
-                      }
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                     >
                       {link.name}
                     </Link>
@@ -396,12 +363,8 @@ export default function Footer() {
                       href={link.href}
                       className="text-sm inline-block transition-all duration-200 hover:translate-x-0.5"
                       style={{ color: "#94a3b8" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "#4536c9")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "#94a3b8")
-                      }
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                     >
                       {link.name}
                     </Link>
@@ -425,12 +388,8 @@ export default function Footer() {
                       href={link.href}
                       className="text-sm inline-block transition-all duration-200 hover:translate-x-0.5"
                       style={{ color: "#94a3b8" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "#4536c9")
-                      }
-                      onMouseLeave={(e) =>
-                        (e.currentTarget.style.color = "#94a3b8")
-                      }
+                      onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                      onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                     >
                       {link.name}
                     </Link>
@@ -452,7 +411,9 @@ export default function Footer() {
             >
               © {currentYear} AJAX Global. All rights reserved. · Developed by{" "}
               <a
-                href="#"
+                href="https://devntomsolutions.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="underline underline-offset-2 transition-colors duration-200"
                 style={{ color: "#64748b" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
@@ -467,23 +428,17 @@ export default function Footer() {
               className="flex items-center gap-5 text-xs"
               style={{ color: "#475569" }}
             >
-              {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
-                (item) => (
-                  <Link
-                    key={item}
-                    href="#"
-                    className="transition-colors duration-200"
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#4536c9")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "#475569")
-                    }
-                  >
-                    {item}
-                  </Link>
-                ),
-              )}
+              {legalLinks.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="transition-colors duration-200"
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#4536c9")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
 
             {/* Socials */}
@@ -493,6 +448,8 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
                   style={{
                     backgroundColor: "#1e293b",

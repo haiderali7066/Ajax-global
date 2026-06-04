@@ -62,7 +62,7 @@ const mainServices: MainService[] = [
           "CRM & Calendar Integration",
           "Auto Human-Escalation Triggers",
         ],
-        href: "/intellidesq/chat",
+        href: "/contact",
         color: "#6366f1",      // indigo
         stat: { v: 1.2, s: "s", l: "Avg. Response Latency" },
       },
@@ -79,7 +79,7 @@ const mainServices: MainService[] = [
           "Smart Intent-Based Routing",
           "TCPA, GDPR & HIPAA Compliant",
         ],
-        href: "/intellidesq/voice",
+        href: "/contact",
         color: "#7c3aed",      // violet — warmer, deeper purple
         stat: { v: 96, s: "%", l: "Voice Call Accuracy" },
       },
@@ -96,7 +96,7 @@ const mainServices: MainService[] = [
           "Intent-Based Lead Scoring",
           "Multi-Channel Follow-Up (Voice, SMS, Chat)",
         ],
-        href: "/intellidesq/lead-gen",
+        href: "/intellidesq/contact",
         color: "#1d4ed8",      // blue — clearly cool vs purple
         stat: { v: 7, s: "×", l: "Higher Conversion in 60s" },
       },
@@ -113,7 +113,7 @@ const mainServices: MainService[] = [
           "Real-Time Competitor Trend Tracking",
           "Performance Learning Loop",
         ],
-        href: "/intellidesq/social",
+        href: "/contact",
         color: "#c026d3",      // fuchsia — bright, warm pop
         stat: { v: 24, s: "/7", l: "Platform Engagement" },
       },
@@ -130,7 +130,7 @@ const mainServices: MainService[] = [
           "Scalable Without Adding Headcount",
           "Real-Time Auditable Analytics",
         ],
-        href: "/intellidesq/workflow",
+        href: "/contact",
         color: "#0891b2",      // cyan — cool teal contrast
         stat: { v: 99, s: "%", l: "Workflow Success Rate" },
       },
@@ -160,7 +160,7 @@ const mainServices: MainService[] = [
           "Backup Agent Coverage Always Ready",
           "True Brand Ambassador Training",
         ],
-        href: "/hos/customer-service",
+        href: "/contact",
         color: "#10b981",      // emerald
         stat: { v: 99.9, s: "%", l: "Attendance Guaranteed" },
       },
@@ -177,7 +177,7 @@ const mainServices: MainService[] = [
           "Industry-Specific Closer Training",
           "100% Commission Transparency to Reps",
         ],
-        href: "/hos/sales",
+        href:"/contact",
         color: "#0f766e",      // teal — darker, cooler green
         stat: { v: 5, s: "+", l: "Minimum Follow-Ups Per Lead" },
       },
@@ -194,7 +194,7 @@ const mainServices: MainService[] = [
           "AppFolio & Buildium Expertise",
           "Vendor Communication & Invoice Follow-Up",
         ],
-        href: "/hos/property-management",
+        href: "/contact",
         color: "#65a30d",      // lime — warm yellow-green, clearly distinct
         stat: { v: 100, s: "%", l: "Requests Logged & Tracked" },
       },
@@ -211,7 +211,7 @@ const mainServices: MainService[] = [
           "Disaster Recovery & BCDR Planning",
           "Cloud & On-Prem Infrastructure (AWS, Azure, GCP)",
         ],
-        href: "/hos/it-support",
+        href: "/contact",
         color: "#0284c7",      // sky blue — cool tech feel
         stat: { v: 99.9, s: "%", l: "Guaranteed System Uptime" },
       },
@@ -228,7 +228,7 @@ const mainServices: MainService[] = [
           "Optional Paid Ad Campaign Management",
           "Facebook, Instagram, LinkedIn, TikTok & More",
         ],
-        href: "/hos/social-media",
+        href: "/contact",
         color: "#d97706",      // amber — warm, punchy, totally different
         stat: { v: 7, s: "+", l: "Platforms Actively Managed" },
       },

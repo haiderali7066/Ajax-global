@@ -62,7 +62,9 @@ export default function RolesWeProvide() {
                 whileHover={{ y: -4 }}
               >
                 <Link
-                  href={`/hos/roles/${role.slug}`}
+                  // href={`/hos/roles/${role.slug}`}
+                  // href={`/hos/roles#${role.slug}`}
+                  href={`/services-detailed#${role.slug}`}
                   className="relative flex flex-col h-full p-5 overflow-hidden transition-all duration-300 bg-white border cursor-pointer group rounded-2xl border-gray-200/60 hover:border-indigo-200 hover:shadow-lg"
                   style={{ textDecoration: "none", display: "flex" }}
                 >

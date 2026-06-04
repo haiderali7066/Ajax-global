@@ -106,7 +106,9 @@ export default function RolesWeProvide() {
                 whileHover={{ y: -5, scale: 1.01 }}
               >
                 <Link
-                  href={`/intellidesq/roles/${role.slug}`}
+                  // href={`/intellidesq/roles/${role.slug}`}
+                  href={`/services-detailed#${role.slug}`}
+
                   className="relative flex flex-col h-full p-5 overflow-hidden transition-all duration-300 border cursor-pointer group rounded-2xl"
                   style={{
                     background: "#ffffff",
