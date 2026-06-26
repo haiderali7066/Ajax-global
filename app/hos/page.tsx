@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "AJAX Global's Human Outsourcing Solutions (HOS) helps businesses build elite remote teams — customer support, sales, VA, IT, property management and more. 7-day go-live. 99.2% uptime SLA. No long-term lock-in.",
 
   /* ── Canonical & Robots ── */
-  metadataBase: new URL("https://ajaxglobal.app"),
+  metadataBase: new URL("https://ajaxglobal.com"),
   alternates: {
     canonical: "/hos",
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   /* ── Open Graph ── */
   openGraph: {
     type: "website",
-    url: "https://ajaxglobal.app/hos",
+    url: "https://ajaxglobal.com/hos",
     siteName: "AJAX Global",
     title: "Human Outsourcing Solutions (HOS) — Build Your Perfect Team | AJAX Global",
     description:
@@ -115,17 +115,17 @@ const jsonLd = {
     /* ── Organisation ── */
     {
       "@type": "Organization",
-      "@id": "https://ajaxglobal.app/#organization",
+      "@id": "https://ajaxglobal.com/#organization",
       name: "AJAX Global",
-      url: "https://ajaxglobal.app",
+      url: "https://ajaxglobal.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://ajaxglobal.app/logo.png",
+        url: "https://ajaxglobal.com/logo.png",
       },
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "customer service",
-        url: "https://ajaxglobal.app/contact",
+        url: "https://ajaxglobal.com/contact",
         availableLanguage: ["English", "Spanish", "French", "Arabic"],
       },
       sameAs: [
@@ -137,27 +137,27 @@ const jsonLd = {
     /* ── WebSite ── */
     {
       "@type": "WebSite",
-      "@id": "https://ajaxglobal.app/#website",
-      url: "https://ajaxglobal.app",
+      "@id": "https://ajaxglobal.com/#website",
+      url: "https://ajaxglobal.com",
       name: "AJAX Global",
-      publisher: { "@id": "https://ajaxglobal.app/#organization" },
+      publisher: { "@id": "https://ajaxglobal.com/#organization" },
     },
 
     /* ── WebPage ── */
     {
       "@type": "WebPage",
-      "@id": "https://ajaxglobal.app/hos#webpage",
-      url: "https://ajaxglobal.app/hos",
+      "@id": "https://ajaxglobal.com/hos#webpage",
+      url: "https://ajaxglobal.com/hos",
       name: "Human Outsourcing Solutions (HOS) — Build Your Perfect Team | AJAX Global",
-      isPartOf: { "@id": "https://ajaxglobal.app/#website" },
-      about: { "@id": "https://ajaxglobal.app/#organization" },
+      isPartOf: { "@id": "https://ajaxglobal.com/#website" },
+      about: { "@id": "https://ajaxglobal.com/#organization" },
       description:
         "AJAX Global HOS provides ready-made and custom outsourced teams — customer support, sales, virtual assistants, IT, property management and more. 7-day go-live, 99.2% uptime SLA.",
       breadcrumb: {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: "https://ajaxglobal.app" },
-          { "@type": "ListItem", position: 2, name: "HOS", item: "https://ajaxglobal.app/hos" },
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://ajaxglobal.com" },
+          { "@type": "ListItem", position: 2, name: "HOS", item: "https://ajaxglobal.com/hos" },
         ],
       },
       inLanguage: "en-US",
@@ -166,9 +166,9 @@ const jsonLd = {
     /* ── Service ── */
     {
       "@type": "Service",
-      "@id": "https://ajaxglobal.app/hos#service",
+      "@id": "https://ajaxglobal.com/hos#service",
       name: "Human Outsourcing Solutions (HOS)",
-      provider: { "@id": "https://ajaxglobal.app/#organization" },
+      provider: { "@id": "https://ajaxglobal.com/#organization" },
       serviceType: "Business Process Outsourcing",
       description:
         "Elite outsourced remote teams for customer support, sales, virtual assistance, e-commerce, property management, IT, and more. Powered by AI through IntelliDesq™.",
@@ -270,7 +270,7 @@ const jsonLd = {
     /* ── Review snippets ── */
     {
       "@type": "Organization",
-      "@id": "https://ajaxglobal.app/#organization-reviews",
+      "@id": "https://ajaxglobal.com/#organization-reviews",
       name: "AJAX Global",
       review: [
         {
