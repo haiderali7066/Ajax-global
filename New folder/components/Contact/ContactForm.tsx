@@ -3,8 +3,47 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { CheckCircle, Send } from "lucide-react";
-import { fadeUp, inputBase, SERVICES, TEAM_SIZES, TIMELINES } from "./contact.variants";
 
+// ─────────────────────────────────────────────
+//  ✏️  REPLACE with your Usebasin form ID
+//  e.g. "https://usebasin.com/f/abc123ef"
+// ─────────────────────────────────────────────
+const BASIN_ENDPOINT = "https://usebasin.com/f/302a1cc97eca";
+
+// ── Variants ─────────────────────────────────
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+};
+
+const inputBase =
+  "w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-sm text-gray-900 " +
+  "placeholder:text-gray-400 outline-none transition-all duration-200 " +
+  "focus:border-violet-500 focus:ring-2 focus:ring-violet-100 focus:bg-white";
+
+// ── Static data ───────────────────────────────
+const SERVICES = [
+  "Strategy Consulting",
+  "Digital Transformation",
+  "Product Design",
+  "Data & Analytics",
+  "Marketing Automation",
+  "AI Integration",
+  "Brand Identity",
+  "Growth Hacking",
+];
+
+const TEAM_SIZES = ["1–10", "11–50", "51–200", "201–500", "500+"];
+
+const TIMELINES = [
+  "Immediately",
+  "Within 1 month",
+  "1–3 months",
+  "3–6 months",
+  "6+ months",
+];
+
+// ── Types ─────────────────────────────────────
 interface FormData {
   name:      string;
   company:   string;
@@ -23,6 +62,7 @@ const EMPTY: FormData = {
   services: [], industry: "", teamSize: "", challenge: "", timeline: "",
 };
 
+// ── Component ─────────────────────────────────
 export default function ContactForm() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
@@ -30,6 +70,7 @@ export default function ContactForm() {
   const [formData,  setFormData]  = useState<FormData>(EMPTY);
   const [submitted, setSubmitted] = useState(false);
   const [loading,   setLoading]   = useState(false);
+  const [error,     setError]     = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -46,21 +87,53 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Replace with your real API call
-    await new Promise(r => setTimeout(r, 1200));
-    setSubmitted(true);
-    setLoading(false);
-    setFormData(EMPTY);
-    setTimeout(() => setSubmitted(false), 5000);
+    setError(null);
+
+    try {
+      // Build FormData — Usebasin accepts multipart/form-data
+      const data = new FormData();
+      data.append("name",      formData.name);
+      data.append("company",   formData.company);
+      data.append("email",     formData.email);
+      data.append("phone",     formData.phone);
+      data.append("country",   formData.country);
+      data.append("services",  formData.services.join(", "));
+      data.append("industry",  formData.industry);
+      data.append("teamSize",  formData.teamSize);
+      data.append("timeline",  formData.timeline);
+      data.append("challenge", formData.challenge);
+
+      const res = await fetch(BASIN_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+
+      if (!res.ok) {
+        const json = await res.json().catch(() => ({}));
+        throw new Error((json as { error?: string }).error ?? "Submission failed. Please try again.");
+      }
+
+      setSubmitted(true);
+      setFormData(EMPTY);
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-<section
-  id="contact-form"
-  className="py-20 sm:py-24 lg:py-28"
-  style={{ background: "#f8f7ff" }}
-  ref={ref}
-><div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">        {/* Heading */}
+    <section
+      id="contact-form"
+      className="py-20 sm:py-24 lg:py-28"
+      style={{ background: "#f8f7ff" }}
+      ref={ref}
+    >
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Heading */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -90,6 +163,7 @@ export default function ContactForm() {
           style={{ boxShadow: "0 20px 60px rgba(124,58,237,0.08)" }}
         >
           <AnimatePresence mode="wait">
+
             {/* ── Success state ── */}
             {submitted ? (
               <motion.div
@@ -112,20 +186,43 @@ export default function ContactForm() {
                   A strategy consultant will contact you within 24 hours.
                 </p>
               </motion.div>
+
             ) : (
+
               /* ── Form ── */
               <motion.form key="form" onSubmit={handleSubmit} className="space-y-8">
+
                 {/* Basic Info */}
                 <fieldset>
                   <p className="text-xs font-extrabold uppercase tracking-[.22em] text-primary mb-4">
                     Basic Information
                   </p>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input type="text"  name="name"    value={formData.name}    onChange={handleChange} required placeholder="Full Name *"      className={inputBase} />
-                    <input type="text"  name="company" value={formData.company} onChange={handleChange} required placeholder="Company Name *"   className={inputBase} />
-                    <input type="email" name="email"   value={formData.email}   onChange={handleChange} required placeholder="Email Address *"  className={inputBase} />
-                    <input type="tel"   name="phone"   value={formData.phone}   onChange={handleChange}         placeholder="Phone Number"       className={inputBase} />
-                    <input type="text"  name="country" value={formData.country} onChange={handleChange}         placeholder="Country"            className={`${inputBase} sm:col-span-2`} />
+                    <input
+                      type="text" name="name" value={formData.name}
+                      onChange={handleChange} required
+                      placeholder="Full Name *" className={inputBase}
+                    />
+                    <input
+                      type="text" name="company" value={formData.company}
+                      onChange={handleChange} required
+                      placeholder="Company Name *" className={inputBase}
+                    />
+                    <input
+                      type="email" name="email" value={formData.email}
+                      onChange={handleChange} required
+                      placeholder="Email Address *" className={inputBase}
+                    />
+                    <input
+                      type="tel" name="phone" value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="Phone Number" className={inputBase}
+                    />
+                    <input
+                      type="text" name="country" value={formData.country}
+                      onChange={handleChange}
+                      placeholder="Country" className={`${inputBase} sm:col-span-2`}
+                    />
                   </div>
                 </fieldset>
 
@@ -145,7 +242,12 @@ export default function ContactForm() {
                         className="px-4 py-2 rounded-full text-sm font-semibold border transition-all duration-200"
                         style={
                           formData.services.includes(s)
-                            ? { background: "var(--primary)", color: "white", borderColor: "var(--primary)", boxShadow: "0 4px 12px rgba(124,58,237,0.25)" }
+                            ? {
+                                background: "var(--primary)",
+                                color: "white",
+                                borderColor: "var(--primary)",
+                                boxShadow: "0 4px 12px rgba(124,58,237,0.25)",
+                              }
                             : { background: "white", color: "#6b7280", borderColor: "#e5e7eb" }
                         }
                       >
@@ -161,12 +263,22 @@ export default function ContactForm() {
                     Business Details
                   </p>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <input type="text" name="industry" value={formData.industry} onChange={handleChange} placeholder="Your Industry" className={inputBase} />
-                    <select name="teamSize" value={formData.teamSize} onChange={handleChange} className={inputBase}>
+                    <input
+                      type="text" name="industry" value={formData.industry}
+                      onChange={handleChange}
+                      placeholder="Your Industry" className={inputBase}
+                    />
+                    <select
+                      name="teamSize" value={formData.teamSize}
+                      onChange={handleChange} className={inputBase}
+                    >
                       <option value="">Current Team Size</option>
                       {TEAM_SIZES.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
-                    <select name="timeline" value={formData.timeline} onChange={handleChange} className={inputBase}>
+                    <select
+                      name="timeline" value={formData.timeline}
+                      onChange={handleChange} className={inputBase}
+                    >
                       <option value="">When do you want to start?</option>
                       {TIMELINES.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
@@ -181,6 +293,17 @@ export default function ContactForm() {
                     className={`${inputBase} mt-4 resize-none`}
                   />
                 </fieldset>
+
+                {/* Error message */}
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3"
+                  >
+                    {error}
+                  </motion.p>
+                )}
 
                 {/* Submit */}
                 <motion.button
@@ -208,6 +331,7 @@ export default function ContactForm() {
                     <>Request Consultation <Send className="w-4 h-4" /></>
                   )}
                 </motion.button>
+
               </motion.form>
             )}
           </AnimatePresence>

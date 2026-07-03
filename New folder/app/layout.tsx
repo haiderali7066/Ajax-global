@@ -16,7 +16,7 @@ const _dmsans = Dmsans({ subsets: ["latin"], weight: ["100", "300", "400", "500"
 export const metadata: Metadata = {
   title: 'AJAX Global | Human Outsourcing & AI Intelligence Platform',
   description: 'Scale operations with elite human teams powered by IntelliDesq™ AI-driven intelligence. Human Outsourcing Solutions (HOS), business operations, and intelligent automation.',
-  generator: 'v0.app',
+  generator: 'Devntom solutions',
   keywords: [
     'human outsourcing',
     'business operations',
@@ -55,18 +55,21 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      {
-        url: '/',
-        media: '(prefers-color-scheme: light)',
-      },
-     
-    ],
-    apple: '/apple-icon.png',
-  },
-  alternates: {
-    canonical: 'https://ajaxglobal.com',
-  },
+  icon: [
+    {
+      url: "/logo.jpeg",
+      media: "(prefers-color-scheme: light)",
+    },
+    {
+      url: "/logo.jpeg",
+      media: "(prefers-color-scheme: dark)",
+    },
+  ],
+  apple: "/logo.jpeg",
+},
+alternates: {
+  canonical: "https://ajaxglobal.com",
+},
 }
 
 export default function RootLayout({

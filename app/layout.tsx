@@ -55,18 +55,21 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [
-      {
-        url: '/',
-        media: '(prefers-color-scheme: light)',
-      },
-     
-    ],
-    apple: '/apple-icon.png',
-  },
-  alternates: {
-    canonical: 'https://ajaxglobal.com',
-  },
+  icon: [
+    {
+      url: "/logo.jpeg",
+      media: "(prefers-color-scheme: light)",
+    },
+    {
+      url: "/logo.jpeg",
+      media: "(prefers-color-scheme: dark)",
+    },
+  ],
+  apple: "/logo.jpeg",
+},
+alternates: {
+  canonical: "https://ajaxglobal.com",
+},
 }
 
 export default function RootLayout({

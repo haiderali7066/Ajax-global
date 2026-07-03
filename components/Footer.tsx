@@ -2,16 +2,20 @@
 
 import Link from "next/link";
 import {
+  FaLinkedin,
+  FaInstagram,
+  FaFacebook,
+  FaPinterest,
+} from "react-icons/fa";
+
+import {
   Mail,
   Phone,
   MapPin,
   ArrowRight,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Youtube,
-  Facebook,
+ 
 } from "lucide-react";
+
 
 const footerLinks = {
   AI: [
@@ -48,13 +52,27 @@ const footerLinks = {
   ],
 
 };
-
 const socials = [
-  { icon: Twitter,   href: "https://twitter.com/ajaxglobal",   label: "Twitter" },
-  { icon: Linkedin,  href: "https://linkedin.com/company/ajaxglobal", label: "LinkedIn" },
-  { icon: Instagram, href: "https://instagram.com/ajaxglobal", label: "Instagram" },
-  { icon: Youtube,   href: "https://youtube.com/@ajaxglobal",  label: "YouTube" },
-  { icon: Facebook,  href: "https://facebook.com/ajaxglobal",  label: "Facebook" },
+  {
+    icon: FaLinkedin,
+    href: "https://www.linkedin.com/company/ajax-global",
+    label: "LinkedIn",
+  },
+  {
+    icon: FaInstagram,
+    href: "https://www.instagram.com/ajaxglobalofficial",
+    label: "Instagram",
+  },
+  {
+    icon: FaFacebook,
+    href: "https://www.facebook.com/share/1EKRVhNHVB",
+    label: "Facebook",
+  },
+  {
+    icon: FaPinterest,
+    href: "https://www.pinterest.com/ajaxglobalofficial/",
+    label: "Pinterest",
+  },
 ];
 
 const legalLinks = [

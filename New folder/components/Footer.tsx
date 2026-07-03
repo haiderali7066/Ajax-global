@@ -15,40 +15,38 @@ import {
 
 const footerLinks = {
   AI: [
-    { name: "IntelliDesq™",             href: "/intellidesq" },
-    { name: "AI Chat Agents",            href: "/services#ai-chat-agents" },
-    { name: "AI Voice Agents",           href: "/services#ai-voice-agents" },
-    { name: "AI Lead Generation",        href: "/services#ai-lead-generation" },
-    { name: "AI Social Media Automation",href: "/services#ai-social-media" },
-    { name: "AI Youtube Automation",     href: "/services#ai-youtube" },
-    { name: "AI Workflow",               href: "/services#ai-workflow" },
-    { name: "Miscellaneous",             href: "/services#miscellaneous" },
+    { name: "IntelliDesq™",               href: "/intellidesq" },
+    { name: "AI & Automation",           href: "/services-detailed#ai-automation" },
+    { name: "Sales & Lead Generation",   href: "/services-detailed#sales-lead-generation" },
+    { name: "SEO & Social Media",        href: "/services-detailed#seo-social-media" },
+    { name: "Custom Solutions",          href: "/services-detailed#custom-solutions" },
   ],
   HOS: [
-    { name: "Customer Service",          href: "/hos#customer-service" },
-    { name: "Custom Remote Teams",       href: "/hos#remote-teams" },
-    { name: "Client Retention",          href: "/hos#client-retention" },
-    { name: "Scheduling & Dispatching",  href: "/hos#scheduling" },
-    { name: "Property Management Support", href: "/hos#property-management" },
-    { name: "E-Commerce Management",     href: "/hos#ecommerce" },
-    { name: "Sales & Lead Generation",   href: "/hos#sales" },
-    { name: "SEO",                        href: "/hos#seo" },
-    { name: "Social Media Marketing",    href: "/hos#social-media" },
-    { name: "Virtual & Admin Assistant", href: "/hos#virtual-assistant" },
-    { name: "IT Support & Cybersecurity",href: "/hos#it-support" },
+    { name: "Customer Support",          href: "/services-detailed#customer-support" },
+    { name: "Custom Remote Teams",       href: "/services-detailed#custom-remote-teams" },
+    { name: "Client Retention",          href: "/services-detailed#client-retention" },
+    { name: "Scheduling & Dispatch",     href: "/services-detailed#scheduling-dispatch" },
+    { name: "Property Management",       href: "/services-detailed#property-management" },
+    { name: "E-Commerce Management",     href: "/services-detailed#ecommerce-management" },
+    { name: "Sales & Lead Generation",   href: "/services-detailed#sales-lead-generation" },
+    { name: "SEO & Content",             href: "/services-detailed#seo-content" },
+    { name: "SEO & Social Media",        href: "/services-detailed#seo-social-media" },
+    { name: "Virtual & Admin Assistants", href: "/services-detailed#virtual-admin-assistants" },
+    { name: "IT & Cybersecurity",        href: "/services-detailed#it-cybersecurity" },
   ],
   Products: [
-    { name: "Work Management", href: "/intellidesq#work-management" },
-    { name: "CRM",             href: "/intellidesq#crm" },
-    { name: "Campaigns",       href: "/intellidesq#campaigns" },
-    { name: "Services",        href: "/services" },
+    { name: "Work Management",           href: "/services-detailed#custom-solutions" },
+    { name: "CRM & RevOps",              href: "/services-detailed#crm-revops" },
+    { name: "Growth Marketing",          href: "/services-detailed#growth-marketing" },
+    { name: "Services",                  href: "/services-detailed" },
   ],
   Features: [
-    { name: "HOS",          href: "/hos" },
-    { name: "AI",           href: "/services#ai" },
-    { name: "Integrations", href: "/intellidesq#integrations" },
-    { name: "Automations",  href: "/intellidesq#automations" },
+    { name: "HOS",                       href: "/hos" },
+    { name: "AI",                        href: "/intellidesq" },
+    { name: "Integrations",              href: "/services-detailed#ai-automation" },
+    { name: "Automations",               href: "/services-detailed#ai-automation" },
   ],
+
 };
 
 const socials = [
@@ -270,7 +268,7 @@ export default function Footer() {
                     onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
                   >
                     <MapPin className="w-4 h-4 mt-0.5 shrink-0 opacity-50 group-hover:opacity-100" />
-                    451 Wall Street, UK, London
+                    1500 N. GRANT ST, STE R, Denver, CO 80203, US
                   </a>
                 </li>
                 <li>
@@ -413,7 +411,7 @@ export default function Footer() {
             >
               © {currentYear} AJAX Global. All rights reserved. · Developed by{" "}
               <a
-                href="https://devntom.com"
+                href="https://devntomsolutions.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 transition-colors duration-200"

@@ -5,6 +5,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, TrendingUp } from "lucide-react";
 import { vFadeUp } from "./shared";
+import Link from "next/link";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -479,11 +480,14 @@ export default function ProductLifecycle() {
                 <p className="text-emerald-200/60 text-sm leading-relaxed">{a.description}</p>
 
                 <div className="flex items-center gap-4 flex-wrap">
+                  <Link href="/contact#contact-form">
+  
                   <Button
                     className="bg-white text-emerald-900 hover:bg-emerald-50 rounded-full px-7 h-11 font-bold hover:shadow-lg transition-all duration-300 text-sm"
                   >
                     GET STARTED FREE
                   </Button>
+                  </Link>
                   {/* Key stat pill */}
                   <div className="flex flex-col">
                     <span className="text-emerald-300 font-black text-xl leading-none">{a.badge}</span>

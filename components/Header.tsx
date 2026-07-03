@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -26,7 +27,7 @@ export default function Header() {
           className="flex items-center gap-2 text-xl font-bold text-primary hover:text-accent transition-colors duration-300"
         >
           <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center text-white font-bold">
-            AJ
+            <Image src="/logo.jpeg" alt="AJAX Global Logo" width={32} height={32} className='rounded-full' />
           </div>
           <span className="hidden sm:inline">AJAX Global</span>
         </Link>

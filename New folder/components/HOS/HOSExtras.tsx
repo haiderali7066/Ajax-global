@@ -12,57 +12,129 @@ export function AgentArc() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-16 sm:py-20" style={{ background: "#f8f7ff" }} ref={ref}>
-      <div className="max-w-6xl mx-auto px-6">
-        <motion.div variants={fadeUp} initial="hidden" animate={inView ? "show" : "hidden"} className="text-center mb-12">
-          <h2 className="text-[clamp(2rem,4.5vw,3.5rem)] font-light text-gray-900" style={{ letterSpacing: "-0.02em" }}>
-            <span className="font-extrabold bg-primary" style={{ WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Unlimited workforce
-            </span>{" "}
-            that
-            <br />amplifies your team's impact.
-          </h2>
-          <p className="text-gray-400 font-light mt-4 max-w-md mx-auto">
-            Expand what you can achieve with ready-made or custom outsourced teams that act where you already work.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="relative flex items-end justify-center gap-2 sm:gap-3 px-12 mb-10"
+    <section
+  className="py-16 sm:py-24 lg:py-28 overflow-x-hidden"
+  style={{ background: "#f8f7ff" }}
+  ref={ref}
+>
+  <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    {/* Header */}
+    <motion.div
+      variants={fadeUp}
+      initial="hidden"
+      animate={inView ? "show" : "hidden"}
+      className="text-center mb-10 sm:mb-12"
+    >
+      <span className="text-xs font-semibold uppercase tracking-[.2em] text-indigo-500 block mb-3 sm:mb-4">
+        AJAX Global HOS
+      </span>
+      <h2
+        className="text-[clamp(1.75rem,5vw,3.5rem)] font-light text-gray-900 leading-[1.15]"
+        style={{ letterSpacing: "-0.02em" }}
+      >
+        <span
+          className="font-extrabold bg-primary"
+          style={{
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
         >
-          <div className="absolute inset-y-0 left-0 w-20 pointer-events-none" style={{ background: "linear-gradient(to right,#f8f7ff,transparent)", zIndex: 10 }} />
-          <div className="absolute inset-y-0 right-0 w-20 pointer-events-none" style={{ background: "linear-gradient(to left,#f8f7ff,transparent)", zIndex: 10 }} />
-          {AVATARS.map((a, i) => (
-            <motion.div
-              key={i}
-              className="shrink-0 rounded-full flex items-center justify-center cursor-default select-none border-2 border-white shadow-md relative"
-              style={{ width: a.size, height: a.size, background: a.color, boxShadow: a.size >= 100 ? "0 8px 30px rgba(0,0,0,0.12)" : "0 4px 12px rgba(0,0,0,0.08)" }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 + i * 0.06, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ scale: 1.12, y: -8, zIndex: 10 }}
-            >
-              <span style={{ fontSize: a.size * 0.44 }}>{a.emoji}</span>
-              {[2, 5, 8].includes(i) && (
-                <div className="absolute bottom-0.5 right-0.5 w-3 h-3 rounded-full bg-emerald-400 border-2 border-white" />
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
+          Unlimited workforce
+        </span>{" "}
+        that
+        <br className="hidden xs:block" />
+        {" "}amplifies your team's impact.
+      </h2>
+      <p className="text-gray-400 font-light mt-3 sm:mt-4 max-w-sm sm:max-w-md mx-auto text-sm sm:text-base">
+        Expand what you can achieve with ready-made or custom outsourced
+        teams that act where you already work.
+      </p>
+    </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 1, duration: 0.6 }} className="text-center">
-          <p className="text-gray-400 text-sm font-light mb-6">2,000+ professionals deployed across 15+ countries</p>
-          <Link href="/contact">
-            <motion.button whileHover={{ scale: 1.03 }} className="bg-primary inline-flex items-center gap-2 px-8 h-12 rounded-full font-semibold text-white text-sm" style={{ boxShadow: "0 8px 30px rgba(109,40,217,0.28)" }}>
-              Build Your Team <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          </Link>
-        </motion.div>
-      </div>
-    </section>
+    {/* Avatar arc */}
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.9, delay: 0.2 }}
+      className="relative flex items-end justify-center gap-1.5 sm:gap-2 lg:gap-3 px-8 sm:px-12 mb-8 sm:mb-10"
+    >
+      {/* Fade edges */}
+      <div
+        className="absolute inset-y-0 left-0 w-12 sm:w-20 pointer-events-none z-10"
+        style={{ background: "linear-gradient(to right,#f8f7ff,transparent)" }}
+      />
+      <div
+        className="absolute inset-y-0 right-0 w-12 sm:w-20 pointer-events-none z-10"
+        style={{ background: "linear-gradient(to left,#f8f7ff,transparent)" }}
+      />
+
+      {AVATARS.map((a, i) => {
+        // Scale avatars down on mobile: ~65% of original size
+        const mobileSize = Math.round(a.size * 0.65);
+        return (
+          <motion.div
+            key={i}
+            className="shrink-0 rounded-full flex items-center justify-center cursor-default select-none border-2 border-white relative"
+            style={{
+              // Use CSS custom properties for responsive sizing
+              width: `clamp(${mobileSize}px, ${(a.size / 400) * 100}vw, ${a.size}px)`,
+              height: `clamp(${mobileSize}px, ${(a.size / 400) * 100}vw, ${a.size}px)`,
+              background: a.color,
+              boxShadow:
+                a.size >= 100
+                  ? "0 8px 30px rgba(0,0,0,0.12)"
+                  : "0 4px 12px rgba(0,0,0,0.08)",
+            }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              delay: 0.3 + i * 0.06,
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            whileHover={{ scale: 1.12, y: -8, zIndex: 10 }}
+          >
+            <span
+              style={{
+                fontSize: `clamp(${mobileSize * 0.44}px, ${(a.size * 0.44 / 400) * 100}vw, ${a.size * 0.44}px)`,
+                lineHeight: 1,
+              }}
+            >
+              {a.emoji}
+            </span>
+            {[2, 5, 8].includes(i) && (
+              <div className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-emerald-400 border-2 border-white" />
+            )}
+          </motion.div>
+        );
+      })}
+    </motion.div>
+
+    {/* Footer CTA */}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: 1, duration: 0.6 }}
+      className="text-center"
+    >
+      <p className="text-gray-400 text-xs sm:text-sm font-light mb-5 sm:mb-6">
+        2,000+ professionals deployed across 15+ countries
+      </p>
+      <Link href="/contact">
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          className="bg-primary inline-flex items-center gap-2 px-7 sm:px-8 h-11 sm:h-12 rounded-full font-semibold text-white text-sm"
+          style={{
+            boxShadow: "0 8px 30px rgba(109,40,217,0.28)",
+          }}
+        >
+          Build Your Team <ArrowRight className="w-4 h-4" />
+        </motion.button>
+      </Link>
+    </motion.div>
+  </div>
+</section>
   );
 }
 export function PricingSnapshot() {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import Link from "next/link";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Magnetic wrapper — stronger follow (s = strength)
@@ -235,10 +236,10 @@ export default function Hero() {
         >
           {/* Primary CTA */}
           <Mag s={0.6}>
-            <motion.a
+            <Link
               href="/contact"
-              whileHover={{ scale: 1.07 }}
-              whileTap={{ scale: 0.97 }}
+              // whileHover={{ scale: 1.07 }}
+              // whileTap={{ scale: 0.97 }}
               className="bg-primary relative inline-flex items-center gap-2 px-9 py-4 rounded-full text-base font-bold text-white overflow-hidden group"
               style={{
                 boxShadow: "0 0 48px rgba(99,102,241,0.50), inset 0 1px 0 rgba(255,255,255,0.18)",
@@ -259,15 +260,15 @@ export default function Hero() {
                 animate={{ x: ["-100%", "100%"] }}
                 transition={{ duration: 1.1, repeat: Infinity, repeatDelay: 0.4 }}
               />
-            </motion.a>
+            </Link>
           </Mag>
 
           {/* Secondary CTA */}
           <Mag s={0.45}>
-            <motion.a
+            <Link
               href="/services"
-              whileHover={{ scale: 1.04, borderColor: "rgba(99,102,241,0.65)", color: "#a5b4fc" }}
-              whileTap={{ scale: 0.97 }}
+              // whileHover={{ scale: 1.04, borderColor: "rgba(99,102,241,0.65)", color: "#a5b4fc" }}
+              // whileTap={{ scale: 0.97 }}
               className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-base font-semibold text-slate-300 border transition-all duration-300"
               style={{
                 borderColor: "rgba(255,255,255,0.14)",
@@ -276,7 +277,7 @@ export default function Hero() {
               }}
             >
               Explore Services
-            </motion.a>
+            </Link>
           </Mag>
         </motion.div>
 

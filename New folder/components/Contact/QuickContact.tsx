@@ -30,7 +30,7 @@ const CARDS = [
   {
     Icon:        Globe,
     title:       "Countries Served",
-    value:       "USA · Canada · AU · UAE",
+    value:       "1500 N. GRANT ST, STE R, Denver, CO 80203, US",
     description: "International presence, local expertise",
     accent:      "#d97706",
   },
