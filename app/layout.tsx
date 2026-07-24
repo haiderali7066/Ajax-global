@@ -6,7 +6,7 @@ import SeoSchema from '@/components/SeoSchema'
 import './globals.css'
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
-
+import BottomConsentPopup from '@/components/BottomConsentPopup'
 
 
 const _geist = Geist({ subsets: ["latin"] });
@@ -86,7 +86,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Analytics />
-      <Footer />
+        <BottomConsentPopup />
+        <Footer />
       </body>
     </html>
   )

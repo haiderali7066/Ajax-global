@@ -76,9 +76,10 @@ const socials = [
 ];
 
 const legalLinks = [
-  { name: "Privacy Policy",   href: "/privacy-policy" },
-  { name: "Terms of Service", href: "/terms-of-service" },
-  { name: "Cookie Policy",    href: "/cookie-policy" },
+  { name: "Legal",   href: "/legal" },
+  { name: "Privacy Policy",   href: "/legal#privacy-policy" },
+  { name: "Terms of Service", href: "/legal#terms-of-service" },
+  { name: "Cookie Policy",    href: "/legal#cookie-policy" },
 ];
 
 /* ─── Liquid Wave — dark navy tone ──────────────────────────────────── */
