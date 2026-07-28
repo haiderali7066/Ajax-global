@@ -36,7 +36,7 @@ export default function Home() {
       <AjaxAdvantage />
       {/* <TeamImpact /> */}
       {/* <TrustAwards /> */}
-      {/* <AIPlatformCTA /> */}
+      {/* <AIPlatformCTA /> */} 
       <PrimaryCTA />
       <ChatbotWidget />
       <WhatsAppButton />
