@@ -480,10 +480,7 @@ export default function ContactForm() {
                     htmlFor="smsConsent"
                     className="text-xs text-gray-500 leading-relaxed cursor-pointer select-none"
                   >
-                    I consent to receive non-marketing text messages from AJAX Global LLC regarding
-                    appointment scheduling, service alerts, and account support at the phone number
-                    provided. Message frequency may vary. Message &amp; data rates may apply.
-                    Text HELP for assistance, reply STOP to opt out. See our{" "}
+                    I consent to receive non-marketing SMS messages from AJAX Global LLC regarding my inquiry, consultation scheduling, appointment reminders, service updates, and account support at the phone number provided. Consent is not a condition of purchasing any goods or services. Message frequency may vary. Message & data rates may apply. Reply HELP for assistance or STOP to opt out.{" "}
                     <a href="/privacy-policy" className="underline hover:text-gray-800 transition-colors">Privacy Policy</a>
                     {" "}and{" "}
                     <a href="/terms-of-service" className="underline hover:text-gray-800 transition-colors">Terms of Service</a>.
