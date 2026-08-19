@@ -70,6 +70,10 @@ export const metadata: Metadata = {
 alternates: {
   canonical: "https://ajaxglobal.com",
 },
+
+verification: {
+    google: "opm01emOVEwDFpRishdCatV11NsRjYdPwmeNDSlyIwQ",
+  },  
 }
 
 export default function RootLayout({
