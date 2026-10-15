@@ -13,6 +13,7 @@ const navigation = [
   { name: 'IntelliDesq™', href: '/intellidesq' },
   { name: 'Services', href: '/services' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Blog', href: '/blog' },
 ]
 
 export default function Header() {
