@@ -1,8 +1,8 @@
-"client";
+"use client";
 
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ArrowRight, Search, Clock, Calendar, Sparkles, Tag, ChevronRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Search, Clock, Calendar, Sparkles, ChevronRight } from "lucide-react";
 
 // Mock categories & blog data tailored for AJAX Global
 const CATEGORIES = ["All", "AI & Automation", "Software Engineering", "Growth Systems", "Case Studies"];
@@ -68,13 +68,12 @@ export default function BlogIndexPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 selection:bg-primary/20">
-      {/* Hero Section (Matching ContactHero style) */}
+      {/* Hero Section */}
       <section
         ref={heroRef}
         className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden"
         style={{ background: "linear-gradient(180deg, #f8f7ff 0%, #ffffff 100%)" }}
       >
-        {/* Grid texture */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.06]"
           style={{
@@ -83,7 +82,6 @@ export default function BlogIndexPage() {
           }}
         />
 
-        {/* Ambient orbs */}
         <motion.div
           className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full pointer-events-none"
           style={{ background: "radial-gradient(circle,rgba(109,40,217,0.12) 0%,transparent 65%)", filter: "blur(80px)" }}
@@ -126,7 +124,6 @@ export default function BlogIndexPage() {
             Expert perspectives on remote engineering teams, enterprise automation, and high-performance web architecture.
           </motion.p>
 
-          {/* Search bar */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -147,7 +144,6 @@ export default function BlogIndexPage() {
 
       {/* Main Content Area */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        {/* Category Filter Pills */}
         <div className="flex flex-wrap items-center justify-center gap-2 mb-14">
           {CATEGORIES.map((cat) => (
             <button
@@ -164,7 +160,6 @@ export default function BlogIndexPage() {
           ))}
         </div>
 
-        {/* Featured Post Spotlight (Shown only when no search / All category) */}
         {selectedCategory === "All" && searchQuery === "" && (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -215,7 +210,6 @@ export default function BlogIndexPage() {
           </motion.div>
         )}
 
-        {/* Blog Post Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post, i) => (
             <motion.article
@@ -274,7 +268,7 @@ export default function BlogIndexPage() {
         )}
       </section>
 
-      {/* Newsletter / CTA Section (Dark theme matching WhatHappensNext) */}
+      {/* Newsletter / CTA Section */}
       <section className="relative overflow-hidden py-24 mx-6 lg:mx-12 mb-16 rounded-4xl bg-[#0f0b1e]">
         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(109,40,217,0.18) 0%,transparent 65%)", filter: "blur(90px)" }} />
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
